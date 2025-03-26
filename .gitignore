@@ -1,0 +1,11 @@
+# Pliki Visual Studio - niepotrzebne w repozytorium
+.vs/
+*.suo
+*.user
+*.exe
+*.obj
+*.log
+*.cache
+*.pdb
+*.ipch
+*.db
