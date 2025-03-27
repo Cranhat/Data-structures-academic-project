@@ -1,4 +1,4 @@
-#include "linkedlist.hpp"
+#include "Linked list.hpp"
 
 LinkedList::LinkedList() { //konstruktor 
     head = nullptr;
@@ -81,7 +81,7 @@ void LinkedList::deleteValue(int value) {//usuniecie elemntu o wskazanej wartosc
     }
 }
 
-bool LinkedList::find(int value) const { //wyszukiwanie 
+int LinkedList::find(int value) const { //wyszukiwanie 
     Node* current = head;
     while (current != nullptr) {
         if (current->data == value) {
