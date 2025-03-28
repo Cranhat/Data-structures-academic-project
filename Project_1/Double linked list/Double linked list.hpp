@@ -7,10 +7,9 @@ struct Node{
 };
 
 class DoubleLinkedList{
-    // private:
-        Node* head;
-
     public:
+
+    Node* head;
 
     DoubleLinkedList(int data); // Constructor
 
@@ -18,29 +17,27 @@ class DoubleLinkedList{
 
     Node* elementFromFront(); // gets element from front, last that indicates nullptr
 
+    Node* firstElement(); 
+
+    void printElements();
+
     void addFront(int value); // This and below is self-explanatory
 
     void addBack(int value);
 
-    void addInside(int value);
-
-    void addMiddle(int value);
+    void addInside(Node* add_after_node, int value);
 
     void deleteFront();
 
     void deleteBack();
 
-    void deleteInside();
-
-    void deleteMiddle();
+    void deleteInside(Node* delete_after_node);
 
     bool contains(int value);
 
     int getSize(); 
 
     Node* givePointer(); // return a pointer to first node containing value
-
-    
 
 
 };
