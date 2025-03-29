@@ -10,8 +10,9 @@ class DoubleLinkedList{
     public:
 
     Node* head;
+    Node* tail;
 
-    DoubleLinkedList(int data); // Constructor
+    DoubleLinkedList(int head_data, int tail_data); // Constructor
 
     ~DoubleLinkedList(); // Destructor 
 
@@ -37,7 +38,7 @@ class DoubleLinkedList{
 
     int getSize(); 
 
-    Node* givePointer(); // return a pointer to first node containing value
+    Node* givePointer(int value); // return a pointer to first node containing value
 
 
 };

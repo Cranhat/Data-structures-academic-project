@@ -13,7 +13,7 @@ DynamicArray::~DynamicArray() {
 	delete[] data;
 }
 
-void DynamicArray::Resize() {
+void DynamicArray::resize() {
 	capacity = capacity * 2;
 	int* newData = new int[capacity];
 
@@ -27,7 +27,7 @@ void DynamicArray::Resize() {
 
 void DynamicArray::AddFront(int value) {
 	if (size == capacity) {
-		Resize();
+		resize();
 	}
 	else {
 		for (int i = size; i > 0; i++) {
@@ -40,7 +40,7 @@ void DynamicArray::AddFront(int value) {
 
 void DynamicArray::AddBack(int value) {
 	if (size == capacity) {
-		Resize();
+		resize();
 	}
 	else {
 		data[size] = value;
@@ -50,7 +50,7 @@ void DynamicArray::AddBack(int value) {
 
 void DynamicArray::DeleteFront() {
 	if (size > 0) {
-		for (int i = 0, i < size, i++) {
+		for (int i = 0; i < size; i++) {
 			data[i] = data[i + 1];
 		}
 		size--;
@@ -65,7 +65,7 @@ void DynamicArray::DeleteBack() {
 
 void DynamicArray::AddRandom(int index, int element) {
 	if (index < 0 || index > size) {
-		cout << "Nieprawid³owy indeks!" << endl;
+		cout << "NieprawidÅ‚owy indeks!" << endl;
 		return;
 	}
 	if (size == capacity) {
@@ -80,7 +80,7 @@ void DynamicArray::AddRandom(int index, int element) {
 
 void DynamicArray::DeleteRandom(int index) {
 	if (index < 0 || index >= size) {
-		cout << "Nieprawid³owy indeks!" << endl;
+		cout << "NieprawidÅ‚owy indeks!" << endl;
 		return;
 	}
 	for (int i = index; i < size - 1; i++) {

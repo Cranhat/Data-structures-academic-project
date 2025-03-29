@@ -9,7 +9,7 @@ private:
 	int size; // aktualny rozmiar tablicy
 	int capacity; // max pojemnosc 
 
-	void Resize(); //powiêkszanie tablicy
+	void resize(); //powiï¿½kszanie tablicy
 public:
 	DynamicArray(); //konstruktor
 	~DynamicArray(); //dekonstruktor

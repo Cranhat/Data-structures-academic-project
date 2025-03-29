@@ -1,33 +1,31 @@
 #include "Double linked list.hpp"
 #include <iostream>
 
-DoubleLinkedList::DoubleLinkedList(int value){
+DoubleLinkedList::DoubleLinkedList(int head_data, int tail_data){
 
     head = new Node();
+    tail = new Node();
+
     head -> previous = nullptr;
-    head -> next = nullptr;
-    head -> data = value;
+    head -> next = tail;
+    head -> data = head_data;
+    tail -> next = nullptr;
+    tail -> previous = head;
+    tail -> data = tail_data;
+
+    
 }
 
-DoubleLinkedList::~DoubleLinkedList(){
-
-    while (this -> head != nullptr) {
-
-        deleteFront();
-
-    }
+DoubleLinkedList::~DoubleLinkedList(){ // nie dziala
+    // while (head != nullptr) {
+    //     deleteFront();
+    // }
 }
 
 Node* DoubleLinkedList::elementFromFront(){
 
-    Node* next_element = head;
+    return tail;
 
-    while(next_element -> next != nullptr){
-
-        next_element = next_element -> next;
-
-    }
-    return next_element;
 }
 
 void DoubleLinkedList::printElements(){
@@ -48,11 +46,13 @@ void DoubleLinkedList::printElements(){
 void DoubleLinkedList::addFront(int value){
 
     Node* newNode = new Node();
-
-    elementFromFront() -> next = newNode;
+    Node* temp_ptr = newNode;
+    tail -> next = newNode;
     newNode -> data = value;
     newNode -> next = nullptr;
-    newNode -> previous = elementFromFront();
+    newNode -> previous = tail;
+    newNode = tail;
+    tail = temp_ptr;
     
 }
 
@@ -69,11 +69,7 @@ void DoubleLinkedList::addBack(int value){
 }
 
 void DoubleLinkedList::addInside(Node* add_after_node, int value){
-    if (add_after_node -> next == nullptr){
-
-        addFront(value);
-
-    }else{
+    if (add_after_node != tail){
 
         Node* temp_node = add_after_node -> next;
         Node* new_node = new Node();
@@ -83,21 +79,23 @@ void DoubleLinkedList::addInside(Node* add_after_node, int value){
         new_node -> next = temp_node;
         temp_node -> previous = new_node;
         new_node -> previous = add_after_node;
+    }else {
+        addFront(value);
     }
 }
 
 
 void DoubleLinkedList::deleteFront(){
+    if (tail -> previous != head){
+        Node* deleted_element_ptr =  tail;
 
-    Node* next_to_be_deleted =  elementFromFront();
+        Node* previous_from_deleted_ptr = deleted_element_ptr -> previous;
+        previous_from_deleted_ptr -> next = nullptr;
 
-    do{
+        delete deleted_element_ptr;
+        tail = previous_from_deleted_ptr;
 
-        Node* temp_ptr = next_to_be_deleted -> previous;
-        delete next_to_be_deleted;
-        next_to_be_deleted = temp_ptr;
-
-    }while(next_to_be_deleted != head);
+    }
 }
 
 void DoubleLinkedList::deleteBack(){
@@ -105,27 +103,21 @@ void DoubleLinkedList::deleteBack(){
     if (head -> next != nullptr){
 
         Node* temp_ptr = head -> next;
-        delete(head);
+        delete head;
         head = temp_ptr;
 
     }
 }
 
 void DoubleLinkedList::deleteInside(Node* delete_after_node){
-    if ((delete_after_node -> next) -> next != nullptr){
-
+    if(delete_after_node == tail) printf("recieved tail pointer\n");
+    else if ((delete_after_node -> next) == tail){
+        deleteFront();
+    }else{
         Node* temp_ptr = (delete_after_node -> next) -> next;
         delete delete_after_node -> next;
         delete_after_node -> next = temp_ptr;
         temp_ptr -> previous = delete_after_node;
-
-    }else if ((delete_after_node -> next) != nullptr){
-        printf("tryin to delete from front\n");
-        deleteFront();
-        printf("tryin to delete from front\n");
-    }else {
-
-        throw std::invalid_argument( "recieved last node" );
 
     }
 }
@@ -145,7 +137,19 @@ bool DoubleLinkedList::contains(int value){
     
 }
 
-Node* DoubleLinkedList::givePointer(){
+Node* DoubleLinkedList::givePointer(int value){
+
+    Node* next_element = head;
+
+    while(next_element -> next != nullptr){
+
+        if (next_element -> data == value) return next_element;
+
+        next_element = next_element -> next;
+
+    }
+
+    return nullptr;
 
 }
 
