@@ -16,10 +16,10 @@ DoubleLinkedList::DoubleLinkedList(int head_data, int tail_data){
     
 }
 
-DoubleLinkedList::~DoubleLinkedList(){ // nie dziala
-    // while (head != nullptr) {
-    //     deleteFront();
-    // }
+DoubleLinkedList::~DoubleLinkedList(){ // smth is wrong
+    while (head != nullptr) {
+        deleteFront();
+    }
 }
 
 Node* DoubleLinkedList::elementFromFront(){
@@ -57,6 +57,7 @@ void DoubleLinkedList::addFront(int value){
 }
 
 void DoubleLinkedList::addBack(int value){
+
     Node* newNode = new Node();
 
     int head_value = head -> data;
@@ -66,6 +67,7 @@ void DoubleLinkedList::addBack(int value){
     newNode -> previous = nullptr;
     this -> head -> previous = newNode;
     this -> head = newNode;
+
 }
 
 void DoubleLinkedList::addInside(Node* add_after_node, int value){
@@ -79,22 +81,32 @@ void DoubleLinkedList::addInside(Node* add_after_node, int value){
         new_node -> next = temp_node;
         temp_node -> previous = new_node;
         new_node -> previous = add_after_node;
+
     }else {
+
         addFront(value);
+
     }
 }
 
 
 void DoubleLinkedList::deleteFront(){
-    if (tail -> previous != head){
-        Node* deleted_element_ptr =  tail;
 
-        Node* previous_from_deleted_ptr = deleted_element_ptr -> previous;
-        previous_from_deleted_ptr -> next = nullptr;
+    if (tail != nullptr) {  
+        Node* deleted_element_ptr = tail;
+        tail = tail->previous; 
+
+        if (tail != nullptr) {
+            
+            tail->next = nullptr;
+
+        } else {
+
+            head = nullptr; 
+
+        }
 
         delete deleted_element_ptr;
-        tail = previous_from_deleted_ptr;
-
     }
 }
 
@@ -107,19 +119,26 @@ void DoubleLinkedList::deleteBack(){
         head = temp_ptr;
 
     }
+
 }
 
 void DoubleLinkedList::deleteInside(Node* delete_after_node){
+
     if(delete_after_node == tail) printf("recieved tail pointer\n");
+
     else if ((delete_after_node -> next) == tail){
+
         deleteFront();
+
     }else{
+
         Node* temp_ptr = (delete_after_node -> next) -> next;
         delete delete_after_node -> next;
         delete_after_node -> next = temp_ptr;
         temp_ptr -> previous = delete_after_node;
 
     }
+
 }
 
 bool DoubleLinkedList::contains(int value){
@@ -133,6 +152,7 @@ bool DoubleLinkedList::contains(int value){
         next_element = next_element -> next;
 
     }
+
     return false;
     
 }
@@ -166,5 +186,7 @@ int DoubleLinkedList::getSize(){
         size += 1;
 
     }
+
     return size;
+
 }
