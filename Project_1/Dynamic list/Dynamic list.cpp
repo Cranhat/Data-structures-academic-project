@@ -13,7 +13,7 @@ DynamicArray::~DynamicArray() {
 	delete[] data;
 }
 
-void DynamicArray::resize() {
+void DynamicArray::resize() { //zwiekszanie rozmiaru
 	capacity = capacity * 2;
 	int* newData = new int[capacity];
 
@@ -25,7 +25,7 @@ void DynamicArray::resize() {
 	data = newData;
 }
 
-void DynamicArray::AddFront(int value) {
+void DynamicArray::AddFront(int value) {//dodawanie wartosci na poczatek
 	if (size == capacity) {
 		resize();
 	}
@@ -38,7 +38,7 @@ void DynamicArray::AddFront(int value) {
 	}
 }
 
-void DynamicArray::AddBack(int value) {
+void DynamicArray::AddBack(int value) {//dodawnaie wartosci na koniec
 	if (size == capacity) {
 		resize();
 	}
@@ -48,7 +48,7 @@ void DynamicArray::AddBack(int value) {
 	}
 }
 
-void DynamicArray::DeleteFront() {
+void DynamicArray::DeleteFront() {//usuwanie z poczatku
 	if (size > 0) {
 		for (int i = 0; i < size; i++) {
 			data[i] = data[i + 1];
@@ -57,13 +57,13 @@ void DynamicArray::DeleteFront() {
 	}
 }
 
-void DynamicArray::DeleteBack() {
+void DynamicArray::DeleteBack() {//usuwanie z konca 
 	if (size > 0) {
 		size--;
 	}
 }
 
-void DynamicArray::AddRandom(int index, int element) {
+void DynamicArray::AddRandom(int index, int element) {//dodawanie elementu na losowa pozycje
 	if (index < 0 || index > size) {
 		cout << "Nieprawidłowy indeks!" << endl;
 		return;
@@ -78,7 +78,7 @@ void DynamicArray::AddRandom(int index, int element) {
 	size++;
 }
 
-void DynamicArray::DeleteRandom(int index) {
+void DynamicArray::DeleteRandom(int index) {//usuwanie elementu z losowej pozycji
 	if (index < 0 || index >= size) {
 		cout << "Nieprawidłowy indeks!" << endl;
 		return;
@@ -89,7 +89,7 @@ void DynamicArray::DeleteRandom(int index) {
 	size--;
 }
 
-int DynamicArray::Find(int value) const {
+int DynamicArray::Find(int value) const {//wyszukiwanie danego elementu
 	for (int i = 0; i < size; i++) {
 		if (data[i] == value) {
 			return i;
