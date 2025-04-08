@@ -1,5 +1,7 @@
 #include "Double linked list.hpp"
 #include <iostream>
+#include <string>
+#include <fstream>
 
 DoubleLinkedList::DoubleLinkedList(int head_data, int tail_data){
 
@@ -190,3 +192,20 @@ int DoubleLinkedList::getSize(){
     return size;
 
 }
+
+void DDLTests::allocate_from_csv(std::string FilePath, int size){
+    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+
+    int number;
+    int count = 0;
+
+    while (myFile >> number && count < size){
+        addFront(number);
+        count++;
+    }
+    deleteBack();deleteBack();
+
+    
+    myFile.close();
+
+};

@@ -27,7 +27,7 @@ public:
     void deleteFront(); //usuniecie elementu z poczatku
 
     void deleteRandom(int index);//usuniecie elemnentu z okreslona wartoscia 
-    void addRandom(int index, int value)
+    void addRandom(int index, int value);
 
     int find(int value) const; //sprawdzanie czy element jest w tablicy 
 

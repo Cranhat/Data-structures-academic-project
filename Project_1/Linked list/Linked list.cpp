@@ -82,13 +82,13 @@ void LinkedList::deleteRandom(int value) {//usuniecie elemntu losowego
 }
 
 
-void LinkedList::addElementAtRandomPosition(int index, int value) {
+void LinkedList::addRandom(int index, int value) {
     if (index < 0 || index > size) {
         std::cout << "Invalid index!" << std::endl;
         return;  
     }
 
-    Node* newNode = new Node();
+    Node* newNode = new Node(value);
     newNode->data = value;
     newNode->next = nullptr;
 

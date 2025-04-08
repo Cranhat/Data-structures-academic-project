@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../DataStructure/DataStructure.hpp"
+#include <string>
 
 struct Node{
     int data;
@@ -43,4 +44,11 @@ class DoubleLinkedList{
     Node* givePointer(int value); // return a pointer to first node containing value
 
 
+};
+
+class DDLTests : public DoubleLinkedList{
+    public: 
+    using DoubleLinkedList::DoubleLinkedList;
+
+    void allocate_from_csv(std::string FilePath, int size);
 };
