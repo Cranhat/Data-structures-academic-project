@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../DataStructure/DataStructure.hpp"
+
 struct Node{
     int data;
     Node* next;
