@@ -1,4 +1,5 @@
 #include "Linked list.hpp"
+#include <fstream>
 
 LinkedList::LinkedList() { //konstruktor 
     head = nullptr;
@@ -12,34 +13,48 @@ LinkedList::~LinkedList() { //destruktor
 }
 
 void LinkedList::addFront(int value) {//dodanie elemntu na poczatek listy 
-    Node* newNode = new Node(value);
-    newNode->next = head;
-    head = newNode;
+    NodeLL* newNodeLL = new NodeLL(value);
+    newNodeLL->next = head;
+    head = newNodeLL;
     size++;
 }
 
 void LinkedList::addBack(int value) { //dodanie elementu na koniec listy
-    Node* newNode = new Node(value);
+    NodeLL* newNodeLL = new NodeLL(value);
     if (head == nullptr) {
-        head = newNode;
+        head = newNodeLL;
     }
     else {
-        Node* current = head;
+        NodeLL* current = head;
         while (current->next != nullptr) {
             current = current->next;
         }
-        current->next = newNode;
+        current->next = newNodeLL;
     }
     size++;
 }
 
 void LinkedList::deleteFront() {//usuniecie pierwszego elemetnu 
     if (head != nullptr) {
-        Node* temp = head;
+        NodeLL* temp = head;
         head = head->next;
         delete temp;
         size--;
     }
+}
+
+void LinkedList::printElements(){
+
+    NodeLL* next_element = head;
+    int i = 0;
+
+    do{
+
+        printf("%dith element = %d\n", i, next_element -> data);
+        next_element = next_element -> next; i++;
+
+    }while(next_element != nullptr);
+    
 }
 
 void LinkedList::deleteBack() {//usuniecie ostatniego elementu 
@@ -50,7 +65,7 @@ void LinkedList::deleteBack() {//usuniecie ostatniego elementu
         head = nullptr;
     }
     else {
-        Node* current = head;
+        NodeLL* current = head;
         while (current->next->next != nullptr) {
             current = current->next;
         }
@@ -68,13 +83,13 @@ void LinkedList::deleteRandom(int value) {//usuniecie elemntu losowego
         return;
     }
 
-    Node* current = head;
+    NodeLL* current = head;
     while (current->next != nullptr && current->next->data != value) {
         current = current->next;
     }
 
     if (current->next != nullptr) {
-        Node* temp = current->next;
+        NodeLL* temp = current->next;
         current->next = current->next->next;
         delete temp;
         size--;
@@ -88,21 +103,21 @@ void LinkedList::addRandom(int index, int value) {
         return;  
     }
 
-    Node* newNode = new Node(value);
-    newNode->data = value;
-    newNode->next = nullptr;
+    NodeLL* newNodeLL = new NodeLL(value);
+    newNodeLL->data = value;
+    newNodeLL->next = nullptr;
 
     if (index == 0) {
-        newNode->next = head;
-        head = newNode;
+        newNodeLL->next = head;
+        head = newNodeLL;
     }
     else {
-        Node* current = head;
+        NodeLL* current = head;
         for (int i = 0; i < index - 1; ++i) {
             current = current->next;
         }
-        newNode->next = current->next;
-        current->next = newNode;
+        newNodeLL->next = current->next;
+        current->next = newNodeLL;
     }
 
     size++;  
@@ -111,7 +126,7 @@ void LinkedList::addRandom(int index, int value) {
 
 
 int LinkedList::find(int value) const { //wyszukiwanie 
-    Node* current = head;
+    NodeLL* current = head;
     while (current != nullptr) {
         if (current->data == value) {
             return true;
@@ -125,3 +140,24 @@ int LinkedList::find(int value) const { //wyszukiwanie
 int LinkedList::getSize() const {
     return size;
 }
+
+void LLTests::allocate_from_csv(std::string FilePath, int size){
+    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+
+    int number;
+    int count = 0;
+
+    while (getSize() > 0){
+
+        deleteBack();
+
+    }
+    
+    while (myFile >> number && count < size){
+        addFront(number);
+        count++;
+    }
+    
+    myFile.close();
+
+};

@@ -24,22 +24,22 @@ void DynamicArray::resize() { //zwiekszanie rozmiaru
 	data = newData;
 }
 
+int DynamicArray::getSize(){
+	return size;
+} 
+
 void DynamicArray::addFront(int value) {//dodawanie wartosci na poczatek
 	if (size == capacity) {
+
 		resize();
-		for (int i = size; i > 0; i++) {
-			data[i] = data[i - 1];
-		}
-		data[0] = value;
-		size++;
 	}
-	else {
-		for (int i = size; i > 0; i++) {
-			data[i] = data[i - 1];
-		}
-		data[0] = value;
-		size++;
+
+	for (int i = size; i > 0; i--) {
+
+		data[i] = data[i - 1];
 	}
+	data[0] = value;
+	size++;
 }
 
 void DynamicArray::printElements(){

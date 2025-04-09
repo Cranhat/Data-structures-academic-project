@@ -5,16 +5,16 @@
 #include "../DataStructure/DataStructure.hpp"
 
 
-struct Node {
+struct NodeLL {
     int data;      //przechowywana wartosc
-    Node* next;    //wskaznik na nastepny element
+    NodeLL* next;    //wskaznik na nastepny element
 
-    Node(int value) : data(value), next(nullptr) {} //konstruktor 
+    NodeLL(int value) : data(value), next(nullptr) {} //konstruktor 
 };
 
 class LinkedList : public DataStructure {
 protected:
-    Node* head;  //wskaznik na poczatek listy
+    NodeLL* head;  //wskaznik na poczatek listy
     int size;    //liczba elementow
 
 public:
@@ -29,6 +29,8 @@ public:
 
     void deleteRandom(int index);//usuniecie elemnentu z okreslona wartoscia 
     void addRandom(int index, int value);
+
+    void printElements();
 
     int find(int value) const; //sprawdzanie czy element jest w tablicy 
 

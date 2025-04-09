@@ -22,6 +22,7 @@ public:
 	void deleteFront(); //usuniecie elementu z poczatku
 
 	void printElements();
+	int getSize();
 
 	void addRandom(int index, int element);
 	void deleteRandom(int index);

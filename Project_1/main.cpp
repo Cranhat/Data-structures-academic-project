@@ -7,18 +7,18 @@
 using namespace std;
 
 int main(){
-	// ======================Dodawanie elementow na pocz¹tek========================
+	// ======================Dodawanie elementow na poczï¿½tek========================
 	DynamicArray dynamicarray;
 	LinkedList linkedlist;
 
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddFront(i); //dodawanie elementow do pustej listy
+		dynamicarray.addFront(i); //dodawanie elementow do pustej listy
 		linkedlist.addFront(i);
 		}
 
 	//czas start
-	dynamicarray.AddFront(4); //mierzenie czasu dodawania 
+	dynamicarray.addFront(4); //mierzenie czasu dodawania 
 	//czas stop
 
 	//czas start
@@ -33,12 +33,12 @@ int main(){
 	LinkedList linkedlist;
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddBack(i);
+		dynamicarray.addBack(i);
 		linkedlist.addBack(i);
 	}
 
 	//czas start
-	dynamicarray.AddBack(4); //mierzenie czasu dodawania 
+	dynamicarray.addBack(4); //mierzenie czasu dodawania 
 	//czas stop
 
 	//czas start
@@ -46,17 +46,17 @@ int main(){
 	//czas stop
 
 
-	//======================Usuwanie elementow z pocz¹tku========================
+	//======================Usuwanie elementow z poczï¿½tku========================
 	DynamicArray dynamicarray;
 	LinkedList linkedlist;
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddBack(i);
+		dynamicarray.addBack(i);
 		linkedlist.addBack(i);//dodawanie elementow do pustej listy
 	}
 
 	//czas start
-	dynamicarray.DeleteFront(); //mierzenie czasu dodawania 
+	dynamicarray.deleteFront(); //mierzenie czasu dodawania 
 	//czas stop
 
 	//czas start
@@ -64,17 +64,17 @@ int main(){
 	//czas stop
 
 
-	//======================Usuwanie elementow z koñca=======================
+	//======================Usuwanie elementow z koï¿½ca=======================
 	DynamicArray dynamicarray;
 	LinkedList linkedlist;
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddBack(i);
-		linkedlist.addBack(i)//dodawanie elementow do pustej listy
+		dynamicarray.addBack(i);
+		linkedlist.addBack(i); //dodawanie elementow do pustej listy
 	}
 
 	//czas start
-	dynamicarray.DeleteBack(); //mierzenie czasu usuwania
+	dynamicarray.deleteBack(); //mierzenie czasu usuwania
 	//czas stop
 
 	//czas start
@@ -82,19 +82,19 @@ int main(){
 	//czas stop
 
 
-	//======================Dodawanie elementów losowo=======================
+	//======================Dodawanie elementï¿½w losowo=======================
 	DynamicArray dynamicarray;
 	LinkedList linkedlist;
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddBack(i);
+		dynamicarray.addBack(i);
 		linkedlist.addBack(i);//dodawanie elementow do pustej listy
 	}
 
 	int index = rand() % 70;
 	int x = 5;
 	//czas start
-	dynamicarray.AddRandom(index,x); //mierzenie czasu dodawania  na losowej pozycji 
+	dynamicarray.addRandom(index,x); //mierzenie czasu dodawania  na losowej pozycji 
 	//czas stop
 
 	//czas start
@@ -103,19 +103,19 @@ int main(){
 
 
 
-	//======================Usuwanie elementów losowo=======================
+	//======================Usuwanie elementï¿½w losowo=======================
 	DynamicArray dynamicarray;
 	LinkedList linkedlist;
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddBack(i);
+		dynamicarray.addBack(i);
 		linkedlist.addBack(i);//dodawanie elementow do pustej listy
 	}
 
 	int index = rand() % 70;
 	
 	//czas start
-	dynamicarray.DeleteRandom(index); //mierzenie czasu dodawania  na losowej pozycji 
+	dynamicarray.deleteRandom(index); //mierzenie czasu dodawania  na losowej pozycji 
 	//czas stop
 
 	//czas start
@@ -130,12 +130,12 @@ int main(){
 	LinkedList linkedlist;
 
 	for (int i = 0; i <= 70; ++i) {
-		dynamicarray.AddBack(i);
+		dynamicarray.addBack(i);
 		linkedlist.addBack(i);//dodawanie elementow do pustej listy
 	}
 
 	//czas start
-	dynamicarray.Find(12); //wyszukiwanie czy element "12" znajduje sie w tablicy 
+	dynamicarray.find(12); //wyszukiwanie czy element "12" znajduje sie w tablicy 
 	//czas stop
 
 	//czas start

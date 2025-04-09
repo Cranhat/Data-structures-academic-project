@@ -15,11 +15,11 @@ class DoubleLinkedList : public DataStructure{
     Node* head;
     Node* tail;
 
-    DoubleLinkedList(int head_data, int tail_data); // Constructor
+    DoubleLinkedList(); // Constructor
 
     ~DoubleLinkedList(); // Destructor 
 
-    Node* elementFromFront(); // gets element from front, last that indicates nullptr
+    Node* lastElement(); // gets element from front, last that indicates nullptr
 
     Node* firstElement(); 
 
