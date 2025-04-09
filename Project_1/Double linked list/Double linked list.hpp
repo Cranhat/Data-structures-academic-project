@@ -9,7 +9,7 @@ struct Node{
     Node* previous;
 };
 
-class DoubleLinkedList{
+class DoubleLinkedList : public DataStructure{
     public:
 
     Node* head;
@@ -46,7 +46,7 @@ class DoubleLinkedList{
 
 };
 
-class DDLTests : public DoubleLinkedList{
+class DLLTests : public DoubleLinkedList{
     public: 
     using DoubleLinkedList::DoubleLinkedList;
 

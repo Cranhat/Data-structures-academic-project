@@ -2,7 +2,8 @@
 #define LINKEDLIST_HPP
 
 #include <iostream>
-using namespace std;
+#include "../DataStructure/DataStructure.hpp"
+
 
 struct Node {
     int data;      //przechowywana wartosc
@@ -11,8 +12,8 @@ struct Node {
     Node(int value) : data(value), next(nullptr) {} //konstruktor 
 };
 
-class LinkedList {
-private:
+class LinkedList : public DataStructure {
+protected:
     Node* head;  //wskaznik na poczatek listy
     int size;    //liczba elementow
 
@@ -32,6 +33,13 @@ public:
     int find(int value) const; //sprawdzanie czy element jest w tablicy 
 
     int getSize() const;        //Liczba elementow 
+};
+
+class LLTests : public LinkedList {
+    public:
+    using LinkedList::LinkedList;
+
+    void allocate_from_csv(std::string FilePath, int size);
 };
 
 #endif 

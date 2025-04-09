@@ -2,9 +2,10 @@
 #define DYNAMICARRAY_H
 
 #include <iostream>
+#include "../DataStructure/DataStructure.hpp"
 
-class DynamicArray {
-private:
+class DynamicArray : public DataStructure {
+protected:
 	int* data; // wskaznik na dynamiczna tablice
 	int size; // aktualny rozmiar tablicy
 	int capacity; // max pojemnosc 
@@ -14,16 +15,26 @@ public:
 	DynamicArray(); //konstruktor
 	~DynamicArray(); //dekonstruktor
 
-	void AddFront(int value); //dodanie elementu na poczatku
-	void AddBack(int value); //dodanie elementu na koncu 
+	void addFront(int value); //dodanie elementu na poczatku
+	void addBack(int value); //dodanie elementu na koncu 
 
-	void DeleteBack(); //usuniecie elementu z konca 
-	void DeleteFront(); //usuniecie elementu z poczatku
+	void deleteBack(); //usuniecie elementu z konca 
+	void deleteFront(); //usuniecie elementu z poczatku
 
-	void AddRandom(int index, int element);
-	void DeleteRandom(int index);
+	void printElements();
 
-	int Find(int value) const; //sprawdzanie czy element jest w tablicy 
+	void addRandom(int index, int element);
+	void deleteRandom(int index);
+
+	int find(int value) const; //sprawdzanie czy element jest w tablicy 
+};
+
+class DATests : public DynamicArray {
+	public:
+
+	using DynamicArray::DynamicArray;
+
+    void allocate_from_csv(std::string FilePath, int size);
 };
 
 #endif 

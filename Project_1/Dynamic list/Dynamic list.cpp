@@ -1,7 +1,6 @@
 #include "Dynamic list.hpp"
 #include <iostream>
-
-using namespace std; 
+#include <fstream>
 
 DynamicArray::DynamicArray() {
 	capacity = 10;
@@ -25,9 +24,14 @@ void DynamicArray::resize() { //zwiekszanie rozmiaru
 	data = newData;
 }
 
-void DynamicArray::AddFront(int value) {//dodawanie wartosci na poczatek
+void DynamicArray::addFront(int value) {//dodawanie wartosci na poczatek
 	if (size == capacity) {
 		resize();
+		for (int i = size; i > 0; i++) {
+			data[i] = data[i - 1];
+		}
+		data[0] = value;
+		size++;
 	}
 	else {
 		for (int i = size; i > 0; i++) {
@@ -38,9 +42,17 @@ void DynamicArray::AddFront(int value) {//dodawanie wartosci na poczatek
 	}
 }
 
-void DynamicArray::AddBack(int value) {//dodawnaie wartosci na koniec
+void DynamicArray::printElements(){
+	for(int i = 0; i < size; i++){
+		printf("%dith element = %d\n", i, data[i]);
+	}
+}
+
+void DynamicArray::addBack(int value) {//dodawnaie wartosci na koniec
 	if (size == capacity) {
 		resize();
+		data[size] = value;
+		size++;
 	}
 	else {
 		data[size] = value;
@@ -48,7 +60,7 @@ void DynamicArray::AddBack(int value) {//dodawnaie wartosci na koniec
 	}
 }
 
-void DynamicArray::DeleteFront() {//usuwanie z poczatku
+void DynamicArray::deleteFront() {//usuwanie z poczatku
 	if (size > 0) {
 		for (int i = 0; i < size; i++) {
 			data[i] = data[i + 1];
@@ -57,15 +69,15 @@ void DynamicArray::DeleteFront() {//usuwanie z poczatku
 	}
 }
 
-void DynamicArray::DeleteBack() {//usuwanie z konca 
+void DynamicArray::deleteBack() {//usuwanie z konca 
 	if (size > 0) {
 		size--;
 	}
 }
 
-void DynamicArray::AddRandom(int index, int element) {//dodawanie elementu na losowa pozycje
+void DynamicArray::addRandom(int index, int element) {//dodawanie elementu na losowa pozycje
 	if (index < 0 || index > size) {
-		cout << "Nieprawidłowy indeks!" << endl;
+		std::cout << "Nieprawidłowy indeks!" << std::endl;
 		return;
 	}
 	if (size == capacity) {
@@ -78,9 +90,9 @@ void DynamicArray::AddRandom(int index, int element) {//dodawanie elementu na lo
 	size++;
 }
 
-void DynamicArray::DeleteRandom(int index) {//usuwanie elementu z losowej pozycji
+void DynamicArray::deleteRandom(int index) {//usuwanie elementu z losowej pozycji
 	if (index < 0 || index >= size) {
-		cout << "Nieprawidłowy indeks!" << endl;
+		std::cout << "Nieprawidłowy indeks!" << std::endl;
 		return;
 	}
 	for (int i = index; i < size - 1; i++) {
@@ -89,7 +101,7 @@ void DynamicArray::DeleteRandom(int index) {//usuwanie elementu z losowej pozycj
 	size--;
 }
 
-int DynamicArray::Find(int value) const {//wyszukiwanie danego elementu
+int DynamicArray::find(int value) const {//wyszukiwanie danego elementu
 	for (int i = 0; i < size; i++) {
 		if (data[i] == value) {
 			return i;
@@ -97,3 +109,23 @@ int DynamicArray::Find(int value) const {//wyszukiwanie danego elementu
 	}
 	return -1;
 }
+
+void DATests::allocate_from_csv(std::string FilePath, int initialized_size){
+    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+
+    int number;
+    int count = 0;
+
+    delete[] data;
+	capacity = 10;
+	size = 0;
+	data = new int[capacity];
+
+    while (myFile >> number && count < initialized_size){
+       	addBack(number);
+        count++;
+    }
+
+    
+    myFile.close();
+};
