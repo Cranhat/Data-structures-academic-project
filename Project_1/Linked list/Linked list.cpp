@@ -147,7 +147,7 @@ void LLTests::allocate_from_csv(std::string FilePath, int size){
     int number;
     int count = 0;
 
-    while (getSize() > 0){
+    while (head != nullptr){
 
         deleteBack();
 

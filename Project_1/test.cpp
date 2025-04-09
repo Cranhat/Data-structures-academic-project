@@ -10,10 +10,10 @@
 
 int main(){
 
-    int values_count = 4;
+    int values_count = 12;
     int iteration_count = 10;
     int keys[values_count];
-    float values[values_count];
+    double values[values_count];
     double time_elapsed;
     double sum_of_time_elapsed;
     string key_name = "count";
@@ -24,6 +24,8 @@ int main(){
     DATests da;
 
     Testing testing;
+    dll.addBack(1);
+    dll.addBack(1);
 
     // addFront(1) for ddl
     for(int j = 0; j < values_count; j++){
