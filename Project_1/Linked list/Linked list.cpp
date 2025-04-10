@@ -141,23 +141,6 @@ int LinkedList::getSize() const {
     return size;
 }
 
-void LLTests::allocate_from_csv(std::string FilePath, int size){
-    std::ifstream myFile(FilePath.c_str(), std::ios::in);
-
-    int number;
-    int count = 0;
-
-    while (head != nullptr){
-
-        deleteBack();
-
-    }
-    
-    while (myFile >> number && count < size){
-        addFront(number);
-        count++;
-    }
-    
-    myFile.close();
-
-};
+void LinkedList::clear(){
+    while (head != nullptr) deleteFront();
+}

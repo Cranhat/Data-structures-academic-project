@@ -1,6 +1,9 @@
-#include "Utilities.hpp"
 #include <string>
 #include <fstream>
+
+#include "Utilities.hpp"
+#include "../DataStructure/DataStructure.hpp"
+#include "../Double linked list/Double linked list.hpp"
 
 
 int* create_randomized_list(int size, int max_value){
@@ -34,5 +37,21 @@ void save_array_to_csv(std::string saveFilePath, int values[], int values_count)
 
     }
 
+    myFile.close();
+}
+
+
+void allocate_from_csv(DataStructure& object, std::string FilePath, int size){
+    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+    int number;
+    int count = 0;
+    object.clear();
+    printf("1\n");
+    while (myFile >> number && count < size){
+        printf("%d\n", number);
+        object.addBack(number);
+        count++;
+    }
+    printf("2\n");
     myFile.close();
 }

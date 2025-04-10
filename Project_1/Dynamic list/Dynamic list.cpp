@@ -110,22 +110,9 @@ int DynamicArray::find(int value) const {//wyszukiwanie danego elementu
 	return -1;
 }
 
-void DATests::allocate_from_csv(std::string FilePath, int initialized_size){
-    std::ifstream myFile(FilePath.c_str(), std::ios::in);
-
-    int number;
-    int count = 0;
-
-    delete[] data;
+void DynamicArray::clear(){
+	delete[] data;
 	capacity = 10;
 	size = 0;
 	data = new int[capacity];
-
-    while (myFile >> number && count < initialized_size){
-       	addBack(number);
-        count++;
-    }
-
-    
-    myFile.close();
-};
+}

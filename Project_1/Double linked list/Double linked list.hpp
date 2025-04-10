@@ -35,6 +35,8 @@ class DoubleLinkedList : public DataStructure{
 
     void deleteBack();
 
+    void clear();
+
     void deleteInside(Node* delete_after_node);
 
     bool contains(int value);

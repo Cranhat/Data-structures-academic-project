@@ -34,14 +34,9 @@ public:
 
     int find(int value) const; //sprawdzanie czy element jest w tablicy 
 
+    void clear();
+
     int getSize() const;        //Liczba elementow 
-};
-
-class LLTests : public LinkedList {
-    public:
-    using LinkedList::LinkedList;
-
-    void allocate_from_csv(std::string FilePath, int size);
 };
 
 #endif 

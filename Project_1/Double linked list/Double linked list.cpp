@@ -227,24 +227,28 @@ int DoubleLinkedList::getSize(){
 
 }
 
-void DLLTests::allocate_from_csv(std::string FilePath, int size){
-    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+void DoubleLinkedList::clear(){
+    while(head != nullptr) deleteFront();
+}
 
-    int number;
-    int count = 0;
+// void DLLTests::allocate_from_csv(std::string FilePath, int size){
+//     std::ifstream myFile(FilePath.c_str(), std::ios::in);
 
-    while (head != nullptr){
+//     int number;
+//     int count = 0;
 
-        deleteBack();
+//     while (head != nullptr){
 
-    }
+//         deleteBack();
+
+//     }
     
-    while (myFile >> number && count < size){
-        addBack(number);
-        count++;
-    }
+//     while (myFile >> number && count < size){
+//         addBack(number);
+//         count++;
+//     }
 
     
-    myFile.close();
+//     myFile.close();
 
-};
+// };

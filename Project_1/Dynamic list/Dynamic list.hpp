@@ -15,6 +15,8 @@ public:
 	DynamicArray(); //konstruktor
 	~DynamicArray(); //dekonstruktor
 
+	void clear();
+
 	void addFront(int value); //dodanie elementu na poczatku
 	void addBack(int value); //dodanie elementu na koncu 
 
