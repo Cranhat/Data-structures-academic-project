@@ -75,7 +75,7 @@ void DynamicArray::deleteBack() {//usuwanie z konca
 	}
 }
 
-void DynamicArray::addRandom(int index, int element) {//dodawanie elementu na losowa pozycje
+void DynamicArray::addIndex(int element, int index) {//dodawanie elementu na losowa pozycje
 	if (index < 0 || index > size) {
 		std::cout << "Nieprawidłowy indeks!" << std::endl;
 		return;
@@ -90,7 +90,7 @@ void DynamicArray::addRandom(int index, int element) {//dodawanie elementu na lo
 	size++;
 }
 
-void DynamicArray::deleteRandom(int index) {//usuwanie elementu z losowej pozycji
+void DynamicArray::deleteIndex(int index) {//usuwanie elementu z losowej pozycji
 	if (index < 0 || index >= size) {
 		std::cout << "Nieprawidłowy indeks!" << std::endl;
 		return;
@@ -101,13 +101,21 @@ void DynamicArray::deleteRandom(int index) {//usuwanie elementu z losowej pozycj
 	size--;
 }
 
-int DynamicArray::find(int value) const {//wyszukiwanie danego elementu
+bool DynamicArray::contains(int value){//wyszukiwanie danego elementu
 	for (int i = 0; i < size; i++) {
 		if (data[i] == value) {
-			return i;
+			return true;
 		}
 	}
-	return -1;
+	return false;
+}
+
+int DynamicArray::firstElement(){
+	return data[0];
+}
+
+int DynamicArray::lastElement(){
+	return data[size];
 }
 
 void DynamicArray::clear(){

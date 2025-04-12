@@ -4,7 +4,6 @@
 
 #include "Double linked list.hpp"
 
-
 DoubleLinkedList::DoubleLinkedList(){
 
     head = nullptr;
@@ -18,15 +17,15 @@ DoubleLinkedList::~DoubleLinkedList(){
     }
 }
 
-Node* DoubleLinkedList::firstElement(){
+int DoubleLinkedList::firstElement(){
 
-    return head;
+    return head -> data;
 
 }
 
-Node* DoubleLinkedList::lastElement(){
+int DoubleLinkedList::lastElement(){
 
-    return tail;
+    return tail -> data;
 
 }
 
@@ -83,27 +82,6 @@ void DoubleLinkedList::addBack(int value){
     }
 }
 
-
-void DoubleLinkedList::addInside(Node* add_after_node, int value){ 
-    if (add_after_node != tail){
-
-        Node* temp_node = add_after_node -> next;
-        Node* new_node = new Node();
-
-        new_node -> data = value;
-        add_after_node -> next = new_node;
-        new_node -> next = temp_node;
-        temp_node -> previous = new_node;
-        new_node -> previous = add_after_node;
-
-    }else {
-
-        addBack(value);
-
-    }
-}
-
-
 void DoubleLinkedList::deleteBack(){  
     if (head == nullptr){
         return;
@@ -157,25 +135,50 @@ void DoubleLinkedList::deleteFront(){
         head -> previous = nullptr;
     }
 }
-
-void DoubleLinkedList::deleteInside(Node* delete_after_node){
-
-    if(delete_after_node == tail) printf("recieved tail pointer\n");
-
-    else if ((delete_after_node -> next) == tail){
-
+void DoubleLinkedList::deleteIndex(int index){
+    if (index > getSize()){
+        return;
+    }else if (index == 0){
+        deleteFront();
+    }else if (index == getSize()){
         deleteBack();
-
     }else{
 
-        Node* temp_ptr = (delete_after_node -> next) -> next;
-        delete delete_after_node -> next;
-        delete_after_node -> next = temp_ptr;
-        temp_ptr -> previous = delete_after_node;
+        int counter = 0;
+        Node* next_item = head;
+
+        while (counter++ != index){
+            next_item = next_item -> next;
+        }
+        (next_item -> previous) -> next = next_item -> next;
+        (next_item -> next) -> previous = next_item -> previous;
+        delete next_item;
+    }
+}
+
+void DoubleLinkedList::addIndex(int value, int index){
+
+    if (index > getSize()){
+        return;
+    }else if (index == getSize() + 1){
+        addBack(value);
+    }else{
+        int counter = 0;
+        Node* next_item = head;
+        Node* newNode = new Node();
+        while (counter++ != index){
+            next_item = next_item -> next;
+        }
+        newNode -> data = value; 
+        newNode -> next = next_item;
+        newNode -> previous = next_item -> previous;
+
+        (next_item -> previous) -> next = newNode;
+        next_item -> previous = newNode;
 
     }
-
 }
+
 
 bool DoubleLinkedList::contains(int value){
 
@@ -207,7 +210,11 @@ Node* DoubleLinkedList::givePointer(int value){
 
     return nullptr;
 
+
+    
 }
+
+
 
 int DoubleLinkedList::getSize(){
 
@@ -228,27 +235,8 @@ int DoubleLinkedList::getSize(){
 }
 
 void DoubleLinkedList::clear(){
+    
     while(head != nullptr) deleteFront();
+
 }
 
-// void DLLTests::allocate_from_csv(std::string FilePath, int size){
-//     std::ifstream myFile(FilePath.c_str(), std::ios::in);
-
-//     int number;
-//     int count = 0;
-
-//     while (head != nullptr){
-
-//         deleteBack();
-
-//     }
-    
-//     while (myFile >> number && count < size){
-//         addBack(number);
-//         count++;
-//     }
-
-    
-//     myFile.close();
-
-// };

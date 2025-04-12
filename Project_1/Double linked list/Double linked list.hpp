@@ -1,12 +1,13 @@
 #pragma once
 
 #include "../DataStructure/DataStructure.hpp"
-#include <string>
 
 struct Node{
+
     int data;
     Node* next;
     Node* previous;
+
 };
 
 class DoubleLinkedList : public DataStructure{
@@ -19,9 +20,9 @@ class DoubleLinkedList : public DataStructure{
 
     ~DoubleLinkedList(); // Destructor 
 
-    Node* lastElement(); // gets element from front, last that indicates nullptr
+    int lastElement(); // gets element from front, last that indicates nullptr
 
-    Node* firstElement(); 
+    int firstElement(); 
 
     void printElements();
 
@@ -29,15 +30,15 @@ class DoubleLinkedList : public DataStructure{
 
     void addBack(int value);
 
-    void addInside(Node* add_after_node, int value);
+    void addIndex(int value, int index);
 
     void deleteFront();
 
     void deleteBack();
 
-    void clear();
+    void deleteIndex(int index);
 
-    void deleteInside(Node* delete_after_node);
+    void clear();
 
     bool contains(int value);
 
@@ -45,12 +46,4 @@ class DoubleLinkedList : public DataStructure{
 
     Node* givePointer(int value); // return a pointer to first node containing value
 
-
-};
-
-class DLLTests : public DoubleLinkedList{
-    public: 
-    using DoubleLinkedList::DoubleLinkedList;
-
-    void allocate_from_csv(std::string FilePath, int size);
 };

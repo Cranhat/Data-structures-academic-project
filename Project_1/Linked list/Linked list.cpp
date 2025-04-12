@@ -75,7 +75,7 @@ void LinkedList::deleteBack() {//usuniecie ostatniego elementu
     size--;
 }
 
-void LinkedList::deleteRandom(int value) {//usuniecie elemntu losowego
+void LinkedList::deleteIndex(int value) {//usuniecie elemntu losowego
     if (head == nullptr) return;
 
     if (head->data == value) {
@@ -97,7 +97,7 @@ void LinkedList::deleteRandom(int value) {//usuniecie elemntu losowego
 }
 
 
-void LinkedList::addRandom(int index, int value) {
+void LinkedList::addIndex(int value, int index) {
     if (index < 0 || index > size) {
         std::cout << "Invalid index!" << std::endl;
         return;  
@@ -122,10 +122,19 @@ void LinkedList::addRandom(int index, int value) {
 
     size++;  
 }
+int LinkedList::firstElement(){
+    return head -> data;
+}
 
+int LinkedList::lastElement(){ // without tail?
+    NodeLL* next_item = head;
+    while(next_item -> next != nullptr){
+        next_item = next_item -> next;
+    }
+    return next_item -> data;
+}
 
-
-int LinkedList::find(int value) const { //wyszukiwanie 
+bool LinkedList::contains(int value){ //wyszukiwanie 
     NodeLL* current = head;
     while (current != nullptr) {
         if (current->data == value) {
@@ -137,7 +146,7 @@ int LinkedList::find(int value) const { //wyszukiwanie
 }
 
 
-int LinkedList::getSize() const {
+int LinkedList::getSize(){
     return size;
 }
 
