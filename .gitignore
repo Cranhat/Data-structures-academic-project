@@ -7,5 +7,6 @@
 *.log
 *.cache
 *.pdb
+*.csv
 *.ipch
 *.db
