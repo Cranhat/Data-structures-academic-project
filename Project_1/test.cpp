@@ -12,8 +12,8 @@
 
 int main(){
 
-    int number_of_measurements = 11;
-    int mean_of_operations = 2;
+    int number_of_measurements = 20;
+    int mean_of_operations = 100;
 
     Testing testing;
     

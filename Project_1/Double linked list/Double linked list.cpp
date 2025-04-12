@@ -30,7 +30,8 @@ int DoubleLinkedList::lastElement(){
 }
 
 void DoubleLinkedList::printElements(){
-
+    if (head == nullptr) return;
+    
     Node* next_element = head;
     int i = 0;
 

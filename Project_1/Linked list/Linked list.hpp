@@ -1,45 +1,33 @@
-#ifndef LINKEDLIST_HPP
-#define LINKEDLIST_HPP
+#pragma once
 
 #include "../DataStructure/DataStructure.hpp"
-
-
-struct NodeLL {
-
-    int data;      //przechowywana wartosc
-    NodeLL* next;    //wskaznik na nastepny element
-
-    NodeLL(int value) : data(value), next(nullptr) {} //konstruktor 
-
-};
+#include "../Double linked list/Double linked list.hpp"
 
 class LinkedList : public DataStructure {
-protected:
-
-    NodeLL* head;  //wskaznik na poczatek listy
-    int size;    //liczba elementow
-
 public:
 
-    LinkedList();         //konstruktor 
+    Node* head;  
+    Node* tail;
 
-    ~LinkedList();        //destruktor 
+    LinkedList();         
+
+    ~LinkedList();         
 
     void printElements();
 
-    void addFront(int value); //dodanie elementu na poczatku
+    void addFront(int value); 
 
-    void addBack(int value); //dodanie elementu na koncu 
+    void addBack(int value); 
 
     void addIndex(int value, int index);
 
-    void deleteBack(); //usuniecie elementu z konca 
+    void deleteBack();
 
-    void deleteFront(); //usuniecie elementu z poczatku
+    void deleteFront();
 
-    void deleteIndex(int index);//usuniecie elemnentu z okreslona wartoscia 
+    void deleteIndex(int index);
 
-    bool contains(int value); //sprawdzanie czy element jest w tablicy 
+    bool contains(int value);
 
     int firstElement();
 
@@ -47,8 +35,6 @@ public:
 
     void clear();
 
-    int getSize();        //Liczba elementow 
+    int getSize(); 
 
 };
-
-#endif 

@@ -1,9 +1,15 @@
-#include "Linked list.hpp"
+#include <iostream>
+#include <string>
 #include <fstream>
 
+#include "Linked list.hpp"
+
+
 LinkedList::LinkedList() { //konstruktor 
+
     head = nullptr;
-    size = 0;
+    tail = nullptr;
+
 }
 
 LinkedList::~LinkedList() { //destruktor 
@@ -13,39 +19,59 @@ LinkedList::~LinkedList() { //destruktor
 }
 
 void LinkedList::addFront(int value) {//dodanie elemntu na poczatek listy 
-    NodeLL* newNodeLL = new NodeLL(value);
-    newNodeLL->next = head;
-    head = newNodeLL;
-    size++;
+    Node* newNode = new Node();
+    newNode -> data = value;
+
+    if (head == nullptr){
+        newNode -> next = nullptr;
+        head = newNode;
+    } else if (tail == nullptr){
+        newNode -> next = head;
+        tail = head;
+        head = newNode;
+    }else {
+        newNode -> next = head;
+        head = newNode;
+    }
 }
 
 void LinkedList::addBack(int value) { //dodanie elementu na koniec listy
-    NodeLL* newNodeLL = new NodeLL(value);
+    Node* newNode = new Node();
+    newNode -> data = value;
+    newNode -> next = nullptr;
+
     if (head == nullptr) {
-        head = newNodeLL;
+        head = newNode;
+    }else if (tail == nullptr) {
+        head -> next = newNode;
+        tail = newNode;
+    }else{
+        tail -> next = newNode;
+        tail = newNode;
     }
-    else {
-        NodeLL* current = head;
-        while (current->next != nullptr) {
-            current = current->next;
-        }
-        current->next = newNodeLL;
-    }
-    size++;
 }
 
 void LinkedList::deleteFront() {//usuniecie pierwszego elemetnu 
-    if (head != nullptr) {
-        NodeLL* temp = head;
-        head = head->next;
-        delete temp;
-        size--;
+    if (head == nullptr) return;
+    if (head -> next == nullptr){
+        delete head;
+        head = nullptr;
+
+    }else if(head -> next == tail){
+        delete head;
+        head = tail;
+        tail = nullptr;
+    }else{
+        Node* temp_ptr = head -> next;
+        delete head;
+        head = temp_ptr;
     }
 }
 
 void LinkedList::printElements(){
+    if (head == nullptr) return;
 
-    NodeLL* next_element = head;
+    Node* next_element = head;
     int i = 0;
 
     do{
@@ -57,85 +83,80 @@ void LinkedList::printElements(){
     
 }
 
-void LinkedList::deleteBack() {//usuniecie ostatniego elementu 
-    if (head == nullptr) return;
-
-    if (head->next == nullptr) {
+void LinkedList::deleteBack() { // nie dziala
+    if (head == nullptr || head -> next == nullptr) {
         delete head;
         head = nullptr;
-    }
-    else {
-        NodeLL* current = head;
-        while (current->next->next != nullptr) {
-            current = current->next;
-        }
-        delete current->next;
-        current->next = nullptr;
-    }
-    size--;
-}
-
-void LinkedList::deleteIndex(int value) {//usuniecie elemntu losowego
-    if (head == nullptr) return;
-
-    if (head->data == value) {
-        deleteFront();
+        tail = nullptr;
         return;
     }
 
-    NodeLL* current = head;
-    while (current->next != nullptr && current->next->data != value) {
-        current = current->next;
-    }
+    Node* next_item = head;
 
-    if (current->next != nullptr) {
-        NodeLL* temp = current->next;
-        current->next = current->next->next;
-        delete temp;
-        size--;
+    while(next_item -> next != tail){
+        next_item = next_item -> next;
+
+    };
+
+    delete tail;
+    tail = next_item;
+    tail -> next = nullptr;
+
+}
+
+
+void LinkedList::deleteIndex(int index) {//usuniecie elemntu losowego
+    if (index > getSize()){
+        return;
+    }else if (index == 0){
+        deleteFront();
+    }else if (index == getSize()){
+        deleteBack();
+    }else{
+
+        int counter = 0;
+        Node* next_item = head;
+        Node* previous_item;
+
+        while (counter++ != index){
+            previous_item = next_item;
+            next_item = next_item -> next;
+        }
+        previous_item -> next = next_item -> next;
+        delete next_item;
     }
 }
 
 
 void LinkedList::addIndex(int value, int index) {
-    if (index < 0 || index > size) {
-        std::cout << "Invalid index!" << std::endl;
-        return;  
-    }
-
-    NodeLL* newNodeLL = new NodeLL(value);
-    newNodeLL->data = value;
-    newNodeLL->next = nullptr;
-
-    if (index == 0) {
-        newNodeLL->next = head;
-        head = newNodeLL;
-    }
-    else {
-        NodeLL* current = head;
-        for (int i = 0; i < index - 1; ++i) {
-            current = current->next;
+    if (index > getSize()){
+        return;
+    }else if (index == getSize() + 1){
+        addBack(value);
+    }else{
+        int counter = 0;
+        Node* next_item = head;
+        Node* previous_item;
+        Node* newNode = new Node();
+        while (counter++ != index){
+            previous_item = next_item;
+            next_item = next_item -> next;
         }
-        newNodeLL->next = current->next;
-        current->next = newNodeLL;
+        newNode -> data = value; 
+        newNode -> next = next_item;
+        previous_item -> next = newNode;
     }
-
-    size++;  
 }
 int LinkedList::firstElement(){
     return head -> data;
 }
 
-int LinkedList::lastElement(){ // without tail?
-    NodeLL* next_item = head;
-    while(next_item -> next != nullptr){
-        next_item = next_item -> next;
-    }
-    return next_item -> data;
-}
+int LinkedList::lastElement(){
+    return tail -> data;
+}   
 
 bool LinkedList::contains(int value){ //wyszukiwanie 
-    NodeLL* current = head;
+    Node* current = head;
     while (current != nullptr) {
         if (current->data == value) {
             return true;
@@ -147,7 +168,20 @@ bool LinkedList::contains(int value){ //wyszukiwanie
 
 
 int LinkedList::getSize(){
+    Node* next_element = head;
+
+    int size = 1;
+
+    while(next_element -> next != nullptr){
+
+        next_element = next_element -> next;
+
+        size += 1;
+
+    }
+
     return size;
+
 }
 
 void LinkedList::clear(){
