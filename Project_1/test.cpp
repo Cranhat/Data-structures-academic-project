@@ -13,7 +13,7 @@
 int main(){
 
     int number_of_measurements = 20;
-    int mean_of_operations = 100;
+    int mean_of_operations = 5;
 
     Testing testing;
     
@@ -21,8 +21,8 @@ int main(){
     LinkedList ll;
     DynamicArray da;
     
-    std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_1/Data/1.csv";
-    std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_1/Results/";
+    std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_1/Data/1.csv";
+    std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_1/Results/";
 
     printf("1\n");
 

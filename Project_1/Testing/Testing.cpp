@@ -25,11 +25,8 @@ double Testing::test_time(DataStructure& object, std::function<void()> func){
 
     auto end = std::chrono::high_resolution_clock::now();
 
-    std::chrono::duration<double> duration = end - start;
-    
-    double fp_seconds = duration / 1.00s;
-    
-    return fp_seconds;
+
+    return std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count(); 
 }
 
 void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count){
