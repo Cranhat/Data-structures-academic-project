@@ -51,7 +51,7 @@ void Testing::test_add_front_operation(std::string saveFilePath, std::string dat
     double values[number_of_measurements];
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
         
@@ -74,7 +74,7 @@ void Testing::test_add_back_operation(std::string saveFilePath, std::string data
     double values[number_of_measurements];
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
         
@@ -98,7 +98,7 @@ void Testing::test_add_random_operation(std::string saveFilePath, std::string da
     int index;
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
             
@@ -122,7 +122,7 @@ void Testing::test_del_front_operation(std::string saveFilePath, std::string dat
     double values[number_of_measurements];
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
         
@@ -144,7 +144,7 @@ void Testing::test_del_back_operation(std::string saveFilePath, std::string data
     double values[number_of_measurements];
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
         
@@ -168,7 +168,7 @@ void Testing::test_del_random_operation(std::string saveFilePath, std::string da
     int index;
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
             
@@ -195,12 +195,13 @@ void Testing::test_contains_random_operation(std::string saveFilePath, std::stri
     
 
     for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
+        allocate_from_csv(object, dataFilePath, 10000 * (j + 1) * (j + 1));
         sum_of_time_elapsed = 0;
         for(int i = 0; i < mean_of_operations ; i++){
             
             sum_of_time_elapsed = test_time(object, [&object]() {
-                int random = rand() % 100000;
+
+                int random = rand() % 1000000000;
                 object.contains(random);
             });
             sum_of_time_elapsed += sum_of_time_elapsed;
