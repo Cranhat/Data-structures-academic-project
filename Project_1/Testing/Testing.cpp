@@ -186,11 +186,13 @@ void Testing::test_del_random_operation(std::string saveFilePath, std::string da
     save_to_csv(saveFilePath, key_name, value_name, keys, values, number_of_measurements);    
 }
 
-void Testing::test_contains_random_existing_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name = "count", std::string value_name = "time"){
+
+void Testing::test_contains_random_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name = "count", std::string value_name = "time"){
     double sum_of_time_elapsed = 0;
     int keys[number_of_measurements];
     double values[number_of_measurements];
     int index;
+    
 
     for(int j = 0; j < number_of_measurements; j++){
         allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
@@ -198,31 +200,8 @@ void Testing::test_contains_random_existing_operation(std::string saveFilePath, 
         for(int i = 0; i < mean_of_operations ; i++){
             
             sum_of_time_elapsed = test_time(object, [&object]() {
-                object.contains(object.lastElement());
-            });
-            sum_of_time_elapsed += sum_of_time_elapsed;
-        }
-        sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
-        keys[j] = object.getSize();
-        values[j] = sum_of_time_elapsed;
-    }
-    save_to_csv(saveFilePath, key_name, value_name, keys, values, number_of_measurements);    
-}
-
-
-void Testing::test_contains_non_existing_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name = "count", std::string value_name = "time"){
-    double sum_of_time_elapsed = 0;
-    int keys[number_of_measurements];
-    double values[number_of_measurements];
-    int index;
-
-    for(int j = 0; j < number_of_measurements; j++){
-        allocate_from_csv(object, dataFilePath, 5000 * (j + 1) * (j + 1));
-        sum_of_time_elapsed = 0;
-        for(int i = 0; i < mean_of_operations ; i++){
-            
-            sum_of_time_elapsed = test_time(object, [&object]() {
-                object.contains(-1);
+                int random = rand() % 100000;
+                object.contains(random);
             });
             sum_of_time_elapsed += sum_of_time_elapsed;
         }

@@ -25,8 +25,6 @@ class Testing{
 
     void test_find_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name, std::string value_name);
 
-    void test_contains_random_existing_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name, std::string value_name);
-
-    void test_contains_non_existing_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name, std::string value_name);
+    void test_contains_random_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name, std::string value_name);
 
 };

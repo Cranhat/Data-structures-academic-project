@@ -12,8 +12,8 @@
 
 int main(){
 
-    int number_of_measurements = 20;
-    int mean_of_operations = 5;
+    int number_of_measurements = 30;
+    int mean_of_operations = 100;
 
     Testing testing;
     
@@ -62,17 +62,12 @@ int main(){
 
     printf("7\n");
 
-    testing.test_contains_random_existing_operation(saveFilePath + "dll contains existent.csv", dataFilePath, dll, number_of_measurements, mean_of_operations);
-    testing.test_contains_random_existing_operation(saveFilePath + "ll contains existent.csv", dataFilePath, ll, number_of_measurements, mean_of_operations);
-    testing.test_contains_random_existing_operation(saveFilePath + "da contains existent.csv", dataFilePath, da, number_of_measurements, mean_of_operations);
 
-    printf("8\n");
-
-    testing.test_contains_non_existing_operation(saveFilePath + "dll contains non existent.csv", dataFilePath, dll, number_of_measurements, mean_of_operations);
-    testing.test_contains_non_existing_operation(saveFilePath + "ll contains non existent.csv", dataFilePath, ll, number_of_measurements, mean_of_operations);
-    testing.test_contains_non_existing_operation(saveFilePath + "da contains non existent.csv", dataFilePath, da, number_of_measurements, mean_of_operations);
+    testing.test_contains_random_operation(saveFilePath + "dll contains random.csv", dataFilePath, dll, number_of_measurements, mean_of_operations);
+    testing.test_contains_random_operation(saveFilePath + "ll contains random.csv", dataFilePath, ll, number_of_measurements, mean_of_operations);
+    testing.test_contains_random_operation(saveFilePath + "da contains random.csv", dataFilePath, da, number_of_measurements, mean_of_operations);
     
-    printf("9\n");
+    printf("8\n");
 
     return 0;
 }
