@@ -1,7 +1,7 @@
 # Data-structures
 Repository for Data Structures academic project.
 
-- Project_1 - analysis of time dependencies working on different databases
+- Project_1 - Analysis of time dependencies working on different data structures.
 
 - Project_2 - 
 
