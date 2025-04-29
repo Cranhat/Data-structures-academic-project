@@ -23,9 +23,15 @@ class DataStructure{
     
     virtual int getSize();
 
+    virtual void insert(int data, int key);
+
     virtual int firstElement();
     
     virtual int lastElement();
 
+    virtual int extractMax();
+
     virtual void clear();
+
+    virtual int findMax();
 };

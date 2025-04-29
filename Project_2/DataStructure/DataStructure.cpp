@@ -24,4 +24,10 @@ int DataStructure::lastElement(){ return 0;}
 
 int DataStructure::firstElement(){ return 0;}
 
+void DataStructure::insert(int data, int key){}
+
+int DataStructure::extractMax(){return 0;}
+
 void DataStructure::clear(){}
+
+int DataStructure::findMax(){return 0;}

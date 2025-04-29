@@ -7,6 +7,7 @@
 //     T value;
 //     int key;
 // };
+
 struct heapNode{
     int value;
     int key;
@@ -38,9 +39,9 @@ class Heap  : public DataStructure{
 
     void insert(int data, int key);
     
-    heapNode* extractMax();
+    int extractMax();
 
-    heapNode* findMax();
+    int findMax();
 
     heapNode* find(int value);
 

@@ -26,6 +26,24 @@ int main(){
 
     hp.insert(8, 400);
 
+    hp.insert(17, 100);
+
+    hp.insert(3, 200);
+
+    hp.insert(2, 400);
+
+    hp.insert(1, 250);
+
+    hp.insert(8, 400);
+
+    hp.buildHeap();
+
+    printf("------\n");
+    hp.printElements();
+    printf("------\n");
+
+    hp.extractMax();
+
 
     hp.buildHeap();
 

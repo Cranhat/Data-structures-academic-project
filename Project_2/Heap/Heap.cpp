@@ -21,8 +21,13 @@ void Heap::insert(int key, int value) {
     newNode -> value = value;
     newNode -> key = key;
     data[size++] = newNode;
+
+    buildHeap();
 }
 
+int Heap::findMax(){
+    return data[0] -> value;
+}
 void Heap::buildHeap(){
     for(int i = size/2 - 1; i >= 0; i--){
         heapify(size, i);
@@ -57,10 +62,10 @@ void Heap::heapify(int size, int i){
     }
 }
 
-heapNode* Heap::extractMax(){
+int Heap::extractMax(){
     heapNode* extracted_node =  data[0];
     deleteMax();
-    return extracted_node;
+    return extracted_node -> value;
 };
 
 void Heap::deleteMax(){
@@ -97,14 +102,14 @@ void Heap::changeKey(heapNode* node_ptr, int key){
 
 void Heap::resize() {
 	capacity = capacity * 2;
-	heapNode* newData = new heapNode[capacity];
+	heapNode** newData = new heapNode*[capacity];
 
 	for (int i = 0; i < size; i++) {
-		newData[i] = *data[i];
+		newData[i] = data[i];
 	}
 
 	delete[] data;
-	data = &newData;
+	data = newData;
 }
 
 void Heap::clear(){
