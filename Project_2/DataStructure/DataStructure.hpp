@@ -29,9 +29,15 @@ class DataStructure{
     
     virtual int lastElement();
 
-    virtual int extractMax();
-
     virtual void clear();
 
     virtual int findMax();
+
+    virtual void changeKey(void* node_ptr, int key);
+
+    virtual void* extractMax();
+
+    virtual void* peek();
+
+    virtual void* find(int value);
 };

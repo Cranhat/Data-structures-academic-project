@@ -39,9 +39,9 @@ class Heap  : public DataStructure{
 
     void insert(int data, int key);
     
-    int extractMax();
+    heapNode* extractMax();
 
-    int findMax();
+    heapNode* peek();
 
     heapNode* find(int value);
 

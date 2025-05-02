@@ -4,6 +4,7 @@
 #include "DataStructure/DataStructure.cpp"
 #include "Utilities/Utilities.hpp"
 #include "Heap/Heap.cpp"
+#include "Array/Array.cpp"
 
 #include "Testing/Testing.cpp"
 
@@ -22,6 +23,7 @@ int main(){
     Testing testing;
     
     Heap hp;
+    PriorityQueueArray ar;
     
     std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
     std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
@@ -30,8 +32,15 @@ int main(){
 
     testing.test_operation(saveFilePath + "hp insert.csv", dataFilePath, hp, "insert", sizes, sizes_size, mean_of_operations);
     testing.test_operation(saveFilePath + "hp extractMax.csv", dataFilePath, hp, "extractMax", sizes, sizes_size, mean_of_operations);
-    testing.test_operation(saveFilePath + "hp findMax.csv", dataFilePath, hp, "findMax", sizes, sizes_size, mean_of_operations);
+    testing.test_operation(saveFilePath + "hp peek.csv", dataFilePath, hp, "peek", sizes, sizes_size, mean_of_operations);
     testing.test_operation(saveFilePath + "hp getSize.csv", dataFilePath, hp, "getSize", sizes, sizes_size, mean_of_operations);
+    testing.test_operation(saveFilePath + "hp changeKey.csv", dataFilePath, hp, "changeKey", sizes, sizes_size, mean_of_operations);
+
+    testing.test_operation(saveFilePath + "ar insert.csv", dataFilePath, ar, "insert", sizes, sizes_size, mean_of_operations);
+    testing.test_operation(saveFilePath + "ar extractMax.csv", dataFilePath, ar, "extractMax", sizes, sizes_size, mean_of_operations);
+    testing.test_operation(saveFilePath + "ar peek.csv", dataFilePath, ar, "peek", sizes, sizes_size, mean_of_operations);
+    testing.test_operation(saveFilePath + "ar getSize.csv", dataFilePath, ar, "getSize", sizes, sizes_size, mean_of_operations);
+    testing.test_operation(saveFilePath + "ar changeKey.csv", dataFilePath, ar, "changeKey", sizes, sizes_size, mean_of_operations);
 
     printf("b\n");
 

@@ -1,4 +1,5 @@
 #pragma once
+#include "../DataStructure/DataStructure.hpp"
 
 class arrayNode {
 public:
@@ -6,8 +7,8 @@ public:
     int value;
 };
 
-class PriorityQueueArray {
-private:
+class PriorityQueueArray : public DataStructure {
+protected:
     arrayNode** data;  
     int size;          
     int capacity;      

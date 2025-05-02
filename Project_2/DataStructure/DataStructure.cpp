@@ -26,8 +26,16 @@ int DataStructure::firstElement(){ return 0;}
 
 void DataStructure::insert(int data, int key){}
 
-int DataStructure::extractMax(){return 0;}
-
 void DataStructure::clear(){}
 
 int DataStructure::findMax(){return 0;}
+
+void DataStructure::changeKey(void* node_ptr, int key){}
+
+void* DataStructure::extractMax(){return nullptr;}
+
+void* DataStructure::peek(){return nullptr;}
+
+void* DataStructure::find(int value){return nullptr;}
+
+

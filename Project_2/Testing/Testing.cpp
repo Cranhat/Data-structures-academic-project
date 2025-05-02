@@ -8,9 +8,8 @@
 
 
 #include "Testing.hpp"
-#include "..\DataStructure/DataStructure.hpp"
-#include "..\Utilities\Utilities.cpp"
-
+#include "../DataStructure/DataStructure.hpp"
+#include "../Utilities/Utilities.cpp"
 
 
 double Testing::test_time(DataStructure& object, std::function<void()> func){
@@ -24,6 +23,35 @@ double Testing::test_time(DataStructure& object, std::function<void()> func){
     std::chrono::duration<double, std::nano> duration = end - start;
     
     return duration.count(); 
+}
+
+void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int size){
+
+    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+
+    int number, key, location;
+    std::string line;
+    int count = 0;
+
+    object.clear();
+
+    while (std::getline(myFile, line) && size > count){
+        
+
+        location = line.find(';');
+
+
+        number = stoi(line.substr(0, location));
+        key = stoi(line.substr(location + 1));
+
+        object.insert(number, key);
+
+
+        count++;
+    }    
+
+
+    myFile.close();
 }
 
 void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count){
@@ -53,18 +81,20 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         allocate_from_csv(object, dataFilePath, sizes[j]);
 
         sum_of_time_elapsed = 0;
+        void* node_ptr = nullptr;
         for(int i = 0; i < mean_of_operations ; i++){
-
-            time_elapsed = test_time(object, [&object, operation]() {
+                if (operation == "changeKey"){
+                    node_ptr = object.find(rand() % object.getSize());
+                }
+            time_elapsed = test_time(object, [&object, operation, node_ptr]() {
                 if (operation == "insert"){
                     object.insert(1, 1);
                 }else if (operation == "extractMax"){
                     object.extractMax();
-                }else if (operation == "findMax"){
-                    object.findMax();
-                }else if (operation == "modifyKey"){
-                    // object.modifyKey()
-                    printf("currently no operation\n");
+                }else if (operation == "peek"){
+                    object.peek();
+                }else if (operation == "changeKey"){
+                    object.changeKey(node_ptr, rand() % object.getSize());
                 }else if(operation == "getSize"){
                     object.getSize();
                 }else{
