@@ -5,6 +5,7 @@
 #include <functional>
 
 class Testing{
+    
     public:
 
     double test_time(DataStructure& object, std::function<void()> func);

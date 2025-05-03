@@ -23,7 +23,7 @@ void PriorityQueueArray::insert(int key, int value) {
     data[size++] = newNode;
 }
 
-arrayNode* PriorityQueueArray::removeMax() {
+arrayNode* PriorityQueueArray::extractMax(){
     if (size == 0) return nullptr;
 
     int maxIndex = 0;

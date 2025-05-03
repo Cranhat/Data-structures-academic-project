@@ -45,9 +45,13 @@ class Heap  : public DataStructure{
 
     heapNode* find(int value);
 
+    int findIndex(heapNode* node_ptr);
+
     void deleteMax();
 
-    void heapify(int size, int i); // sift up
+    void siftUp(int i);
+
+    void heapify(int size, int i);
 
     void buildHeap();
 
@@ -55,7 +59,11 @@ class Heap  : public DataStructure{
 
     void changeValue(heapNode* node_ptr, int value);
 
+    void changeValue(int arrayIndex, int value);
+
     void changeKey(heapNode* node_ptr, int key);
+
+    void changeKey(int arrayIndex, int key);
 
 
 };

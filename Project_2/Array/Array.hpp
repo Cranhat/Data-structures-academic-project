@@ -18,7 +18,7 @@ public:
     ~PriorityQueueArray();
 
     void insert(int key, int value);
-    arrayNode* removeMax();
+    arrayNode* extractMax();
     arrayNode* peek();
     arrayNode* find(int value);
     void changeKey(arrayNode* node_ptr, int newKey);

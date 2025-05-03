@@ -29,24 +29,19 @@ void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int
 
     std::ifstream myFile(FilePath.c_str(), std::ios::in);
 
-    int number, key, location;
+    int number, key, location, count = 0;;
     std::string line;
-    int count = 0;
-
+    
     object.clear();
 
     while (std::getline(myFile, line) && size > count){
-        
 
         location = line.find(';');
-
 
         number = stoi(line.substr(0, location));
         key = stoi(line.substr(location + 1));
 
         object.insert(number, key);
-
-
         count++;
     }    
 
@@ -55,52 +50,50 @@ void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int
 }
 
 void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count){
+
     std::ofstream myFile;
+
     myFile.open(saveFilePath.c_str(), std::ios::out | std::ios::trunc);
 
     myFile << key_name << ";" << value_name << "\n";
 
     for(int i = 0; i < values_count; i++){
-
         myFile << keys[i] << ";" << values[i]<< "\n" << std::setprecision(16);
-
     }
-
     myFile.close();
-
 }
 
 void Testing::test_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, std::string operation, int sizes[], int sizes_size, int mean_of_operations, std::string key_name = "count", std::string value_name = "time"){
 
-    double sum_of_time_elapsed = 0;
-    double time_elapsed;
+    double time_elapsed; double sum_of_time_elapsed = 0;
     int keys[sizes_size];
     double values[sizes_size];
 
     for(int j = 0; j < sizes_size; j++){
+
         allocate_from_csv(object, dataFilePath, sizes[j]);
 
         sum_of_time_elapsed = 0;
         void* node_ptr = nullptr;
+
         for(int i = 0; i < mean_of_operations ; i++){
                 if (operation == "changeKey"){
                     node_ptr = object.find(rand() % object.getSize());
                 }
             time_elapsed = test_time(object, [&object, operation, node_ptr]() {
                 if (operation == "insert"){
-                    object.insert(1, 1);
+                    object.insert(1, rand() % object.getSize() * 10);
                 }else if (operation == "extractMax"){
                     object.extractMax();
                 }else if (operation == "peek"){
                     object.peek();
                 }else if (operation == "changeKey"){
-                    object.changeKey(node_ptr, rand() % object.getSize());
+                    object.changeKey(node_ptr, rand() % object.getSize() * 10);
                 }else if(operation == "getSize"){
                     object.getSize();
                 }else{
                     printf("invalid testing operation\n");
                 }
-                
             });
             if (operation == "insert"){
                 object.extractMax();
@@ -111,8 +104,7 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         }
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
         keys[j] = object.getSize();
-        values[j] = sum_of_time_elapsed;
+        values[j] = sum_of_time_elapsed; 
     }
-    
     save_to_csv(saveFilePath, key_name, value_name, keys, values, sizes_size);
 }

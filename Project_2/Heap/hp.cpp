@@ -16,7 +16,7 @@ int main(){
     hp.insert(3, 400);
 
     
-    hp.insert(17, 100);
+    hp.insert(16, 101);
 
     hp.insert(3, 200);
 
@@ -48,7 +48,10 @@ int main(){
     hp.buildHeap();
 
     heapNode* node_ptr = hp.find(250);
-    hp.changeKey(node_ptr, 100);
+    hp.changeKey(node_ptr, 1000);
+
+    node_ptr = hp.find(101);
+    hp.changeKey(node_ptr, 1);
 
     printf("------\n");
     hp.printElements();

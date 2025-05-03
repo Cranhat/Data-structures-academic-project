@@ -22,17 +22,27 @@ void Heap::insert(int key, int value) {
     newNode -> key = key;
     data[size++] = newNode;
 
-    buildHeap();
+    siftUp(size - 1);
+}
+
+void Heap::siftUp(int index){
+    int parent_index;
+    while(index > 0){
+        parent_index = (index - 1) / 2;
+        if (data[parent_index] -> key < data[index] -> key){
+            swap(parent_index, index);
+        }else{
+            break;
+        }
+        index = parent_index;
+    }
 }
 
 heapNode* Heap::peek(){
     return data[0];
 }
-void Heap::buildHeap(){
-    for(int i = size/2 - 1; i >= 0; i--){
-        heapify(size, i);
-    }
-}
+
+
 
 heapNode* Heap::find(int value){
     for(int i = 0; i < size; i++){
@@ -42,6 +52,12 @@ heapNode* Heap::find(int value){
     }
     return nullptr;
 
+}
+
+void Heap::buildHeap(){
+    for(int i = size/2 - 1; i >= 0; i--){
+        heapify(size, i);
+    }
 }
 
 void Heap::heapify(int size, int i){
@@ -57,10 +73,12 @@ void Heap::heapify(int size, int i){
     }
     if (largest != i){
         swap(i, largest);
-
         heapify(size, largest);
     }
 }
+
+
+
 
 heapNode* Heap::extractMax(){
     heapNode* extracted_node =  data[0];
@@ -90,14 +108,45 @@ int Heap::getSize(){
     return size;
 }   
 
+
+
 void Heap::changeValue(heapNode* node_ptr, int value){
     node_ptr -> value = value;
 }
 
 void Heap::changeKey(heapNode* node_ptr, int key){
-    node_ptr -> key = key;
-    buildHeap();
+    if(key == node_ptr -> key){
+        return;
+    }else if(key > node_ptr -> key){
+        node_ptr -> key = key;
+        siftUp(findIndex(node_ptr));
+    }else{
+        node_ptr -> key = key;
+        buildHeap();
+    }
+}
 
+void Heap::changeKey(int node_index, int key){
+    if(key == data[node_index] -> key){
+        return;
+    }else if(key >  data[node_index] -> key){
+        data[node_index] -> key = key;
+        siftUp(node_index);
+    }else{
+        data[node_index] -> key = key;
+        buildHeap();
+    }
+}
+
+int Heap::findIndex(heapNode* node_ptr){
+    for(int i = 0; i < size; i++){
+        if (data[i] == node_ptr){
+            return i;
+        }
+    }
+    printf("not found\n");
+    return 0;
+    
 }
 
 void Heap::resize() {
