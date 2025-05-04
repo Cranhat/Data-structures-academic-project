@@ -58,7 +58,7 @@ void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::s
     myFile << key_name << ";" << value_name << "\n";
 
     for(int i = 0; i < values_count; i++){
-        myFile << keys[i] << ";" << values[i]<< "\n" << std::setprecision(16);
+        myFile << keys[i] << ";" << values[i]<< "\n" << std::setprecision(20);
     }
     myFile.close();
 }

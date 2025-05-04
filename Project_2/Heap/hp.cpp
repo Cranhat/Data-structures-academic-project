@@ -14,7 +14,6 @@ int main(){
     hp.insert(8, 200);
 
     hp.insert(3, 400);
-
     
     hp.insert(16, 101);
 

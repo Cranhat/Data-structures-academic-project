@@ -12,13 +12,13 @@
 
 int main(){
 
-    int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 2000000};
-    int sizes_size = 10;
+    int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 2000000, 4000000};
+    int sizes_size = 11;
     // int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000};
     // int sizes_size = 7;
 
 
-    int mean_of_operations = 1;
+    int mean_of_operations = 500;
 
 
     Testing testing;

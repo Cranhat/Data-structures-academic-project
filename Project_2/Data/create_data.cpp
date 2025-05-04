@@ -15,7 +15,7 @@ int main(){
 
     for (int i = 0; i < 2; i++){
         list = create_randomized_list(list_size, list_size);
-        keys = create_randomized_list(list_size, list_size);   
+        keys = create_randomized_list(list_size, list_size * 10);   
         save_array_keys_to_csv(saveFilePath + std::to_string(i) + ".csv", list, keys, list_size);
     }
     return 0;
