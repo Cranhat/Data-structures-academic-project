@@ -6,8 +6,8 @@
 
 
 int main(){
-    // string saveFilePath = "C:/Users/cypri/Projects/Algorithms-design-and-analysis/Project_1 Sorting Algorithms/Data/";
-    std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/";
+    std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Data/";
+    // std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/";
 
     int* list;
     int* keys;

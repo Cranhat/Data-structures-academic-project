@@ -14,20 +14,19 @@ int main(){
 
     int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 2000000, 4000000};
     int sizes_size = 11;
-    // int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000};
-    // int sizes_size = 7;
 
-
-    int mean_of_operations = 500;
-
+    int mean_of_operations = 100;
 
     Testing testing;
     
     Heap hp;
     PriorityQueueArray ar;
     
-    std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
-    std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
+    // std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
+    // std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
+
+    std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
+    std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/";
 
     printf("a\n");
 

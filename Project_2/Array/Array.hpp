@@ -1,8 +1,8 @@
 #pragma once
 #include "../DataStructure/DataStructure.hpp"
 
-class arrayNode {
-public:
+struct arrayNode : public NodeBase{
+    ~arrayNode() {}
     int key;
     int value;
 };

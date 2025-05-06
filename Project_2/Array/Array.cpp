@@ -9,6 +9,9 @@ PriorityQueueArray::PriorityQueueArray() {
 }
 
 PriorityQueueArray::~PriorityQueueArray() {
+    for (int i = 0; i < size; i++){
+        delete data[i];
+    }
     delete[] data;
 }
 

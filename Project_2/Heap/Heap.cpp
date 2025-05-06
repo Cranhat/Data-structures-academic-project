@@ -2,7 +2,6 @@
 #include "Heap.hpp"
 #include <optional>
 
-
 Heap::Heap(){
     capacity = 10;
     size = 0;
@@ -10,6 +9,9 @@ Heap::Heap(){
 }
 
 Heap::~Heap(){
+    for (int i = 0; i < size; i++){
+        delete data[i];
+    }
     delete[] data;
 }
 

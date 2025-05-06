@@ -52,7 +52,7 @@ void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int
 void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count){
 
     std::ofstream myFile;
-
+    
     myFile.open(saveFilePath.c_str(), std::ios::out | std::ios::trunc);
 
     myFile << key_name << ";" << value_name << "\n";
@@ -105,6 +105,7 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
         keys[j] = object.getSize();
         values[j] = sum_of_time_elapsed; 
+        
     }
     save_to_csv(saveFilePath, key_name, value_name, keys, values, sizes_size);
 }

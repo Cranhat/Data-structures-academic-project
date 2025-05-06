@@ -1,5 +1,11 @@
 #pragma once
 
+
+struct NodeBase{
+    virtual ~NodeBase() noexcept = default;
+};
+
+
 class DataStructure{
     public:
 
@@ -35,9 +41,9 @@ class DataStructure{
 
     virtual void changeKey(void* node_ptr, int key);
 
-    virtual void* extractMax();
+    virtual NodeBase* extractMax();
 
-    virtual void* peek();
+    virtual NodeBase* peek();
 
-    virtual void* find(int value);
+    virtual NodeBase* find(int value);
 };

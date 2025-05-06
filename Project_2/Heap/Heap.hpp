@@ -8,7 +8,8 @@
 //     int key;
 // };
 
-struct heapNode{
+struct heapNode : public NodeBase{
+    ~heapNode() override {}
     int value;
     int key;
 };
