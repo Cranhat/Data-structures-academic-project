@@ -12,21 +12,26 @@
 
 int main(){
 
-    int sizes[] = {100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000, 2000000, 4000000};
-    int sizes_size = 11;
+    int sizes[] = {500, 10000, 25000, 50000, 75000, 100000, 175000, 250000, 375000, 500000, 625000, 750000, 875000, 1000000};
+    int sizes_size = 14;
 
-    int mean_of_operations = 100;
+    int mean_of_operations = 1000;
+
+    int a = 0;
+    for (int i = 0; i<100000000; i++){
+        a = i;
+    }
 
     Testing testing;
     
     Heap hp;
     PriorityQueueArray ar;
     
-    // std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
-    // std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
+    std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
+    std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
 
-    std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
-    std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/";
+    // std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
+    // std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/";
 
     printf("a\n");
 

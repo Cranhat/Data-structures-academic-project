@@ -7,8 +7,8 @@ import numpy as np
 plt.rcParams.update({'font.size': 18})
 
 
-# path = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/"
-path = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/"
+path = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/"
+# path = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/"
 
 
 files = ["ar changeKey.csv", "ar extractMax.csv", "ar getSize.csv", "ar insert.csv", "ar peek.csv", "hp changeKey.csv", "hp extractMax.csv", "hp getSize.csv", "hp insert.csv", "hp peek.csv"]
@@ -30,6 +30,10 @@ ax.set_title(title)
 plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
@@ -48,6 +52,10 @@ ax.set_title(title)
 plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
@@ -63,9 +71,12 @@ ax.set_title(title)
 plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
-
 fig, ax = plt.subplots(figsize=(20, 10))
 for i, element in enumerate(data):
     if "extractMax" in element:
@@ -78,6 +89,10 @@ ax.set_title(title)
 plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
@@ -89,10 +104,14 @@ for i, element in enumerate(data):
 title = "Operacja getSize dla wszystkich struktur"
 ax.grid()
 ax.set(xticks = data["ar changeKey"]["count"])
-plt.legend(fontsize = "x-large")
 ax.set_title(title)
+plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
@@ -108,6 +127,10 @@ ax.set_title(title)
 plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
@@ -123,6 +146,10 @@ ax.set_title(title)
 plt.legend(fontsize = "x-large")
 plt.xlabel("count")
 plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
