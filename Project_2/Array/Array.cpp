@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 PriorityQueueArray::PriorityQueueArray() {
-    capacity = 10;
+    capacity = 1000;
     size = 0;
     data = new arrayNode*[capacity];
 }
@@ -69,8 +69,16 @@ void PriorityQueueArray::changeKey(arrayNode* node_ptr, int newKey) {
     node_ptr->key = newKey;
 }
 
+void PriorityQueueArray::changeKey(int node_index, int newKey) {
+    data[node_index] -> key = newKey;
+}
+
 void PriorityQueueArray::changeValue(arrayNode* node_ptr, int newValue) {
     node_ptr->value = newValue;
+}
+
+void PriorityQueueArray::changeValue(int node_index, int newValue) {
+    data[node_index] -> value = newValue;
 }
 
 int PriorityQueueArray::getSize() {
@@ -98,4 +106,13 @@ void PriorityQueueArray::printElements() {
     for (int i = 0; i < size; i++) {
         std::cout << i << "th element = " << data[i]->value << ", key = " << data[i]->key << std::endl;
     }
+}
+
+int PriorityQueueArray::findIndex(arrayNode* node_ptr){
+    for(int i = 0; i < size; i++){
+        if(data[i] == node_ptr){
+            return i;
+        }
+    }
+    return -1;
 }

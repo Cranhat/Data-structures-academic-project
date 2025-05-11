@@ -45,14 +45,14 @@ class Heap  : public DataStructure{
     heapNode* peek();
 
     heapNode* find(int value);
-
+    
     int findIndex(heapNode* node_ptr);
 
     void deleteMax();
 
     void siftUp(int i);
 
-    void heapify(int size, int i);
+    void heapify(int i);
 
     void buildHeap();
 

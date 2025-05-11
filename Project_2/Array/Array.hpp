@@ -22,9 +22,13 @@ public:
     arrayNode* peek();
     arrayNode* find(int value);
     void changeKey(arrayNode* node_ptr, int newKey);
+    void changeKey(int node_index, int newKey);
     void changeValue(arrayNode* node_ptr, int newValue);
+    void changeValue(int node_index, int newValue);
+
     int getSize();
     void resize();
     void clear();
     void printElements();
+    int findIndex(arrayNode* node_ptr);
 };

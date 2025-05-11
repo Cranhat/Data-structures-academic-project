@@ -41,9 +41,13 @@ class DataStructure{
 
     virtual void changeKey(void* node_ptr, int key);
 
+    virtual void changeKey(int node_index, int key);
+
     virtual NodeBase* extractMax();
 
     virtual NodeBase* peek();
 
     virtual NodeBase* find(int value);
+
+    int findIndex(NodeBase* node_ptr);
 };

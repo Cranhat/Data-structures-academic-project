@@ -3,7 +3,7 @@
 #include <optional>
 
 Heap::Heap(){
-    capacity = 10;
+    capacity = 1000;
     size = 0;
     data = new heapNode*[capacity];
 }
@@ -58,11 +58,11 @@ heapNode* Heap::find(int value){
 
 void Heap::buildHeap(){
     for(int i = size/2 - 1; i >= 0; i--){
-        heapify(size, i);
+        heapify(i);
     }
 }
 
-void Heap::heapify(int size, int i){
+void Heap::heapify(int i){
     int largest = i;
     int leftNode = i * 2 + 1;
     int rightNode = i * 2 + 2;
@@ -75,7 +75,7 @@ void Heap::heapify(int size, int i){
     }
     if (largest != i){
         swap(i, largest);
-        heapify(size, largest);
+        heapify(largest);
     }
 }
 
@@ -93,7 +93,7 @@ void Heap::deleteMax(){
 
         data[0] = data[size-- - 1];
 
-        heapify(size, 0);
+        heapify(0);
 
     }else if (size == 1){
 
@@ -116,15 +116,17 @@ void Heap::changeValue(heapNode* node_ptr, int value){
     node_ptr -> value = value;
 }
 
+void Heap::changeValue(int node_index, int value){
+    data[node_index] -> value = value;
+}
+
 void Heap::changeKey(heapNode* node_ptr, int key){
-    if(key == node_ptr -> key){
-        return;
-    }else if(key > node_ptr -> key){
+    if(key > node_ptr -> key){
         node_ptr -> key = key;
         siftUp(findIndex(node_ptr));
     }else{
         node_ptr -> key = key;
-        buildHeap();
+        heapify(findIndex(node_ptr));
     }
 }
 
@@ -136,19 +138,17 @@ void Heap::changeKey(int node_index, int key){
         siftUp(node_index);
     }else{
         data[node_index] -> key = key;
-        buildHeap();
+        heapify(node_index);
     }
 }
 
 int Heap::findIndex(heapNode* node_ptr){
     for(int i = 0; i < size; i++){
-        if (data[i] == node_ptr){
+        if(data[i] == node_ptr){
             return i;
         }
     }
-    printf("not found\n");
-    return 0;
-    
+    return -1;
 }
 
 void Heap::resize() {
@@ -182,3 +182,4 @@ void Heap::printElements(){
 		printf("%dith element = %d, key = %d\n", i, data[i] -> value, data[i] -> key);
 	}
 }
+

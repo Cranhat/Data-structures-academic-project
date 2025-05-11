@@ -77,9 +77,6 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         void* node_ptr = nullptr;
 
         for(int i = 0; i < mean_of_operations ; i++){
-                if (operation == "changeKey"){
-                    node_ptr = object.find(rand() % object.getSize());
-                }
             time_elapsed = test_time(object, [&object, operation, node_ptr]() {
                 if (operation == "insert"){
                     object.insert(1, rand() % object.getSize() * 10);
@@ -88,7 +85,7 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
                 }else if (operation == "peek"){
                     object.peek();
                 }else if (operation == "changeKey"){
-                    object.changeKey(node_ptr, rand() % object.getSize() * 10);
+                    object.changeKey(rand() % object.getSize(), rand() % object.getSize() * 10);
                 }else if(operation == "getSize"){
                     object.getSize();
                 }else{

@@ -32,10 +32,14 @@ int DataStructure::findMax(){return 0;}
 
 void DataStructure::changeKey(void* node_ptr, int key){}
 
+void DataStructure::changeKey(int node_index, int key){}
+
 NodeBase* DataStructure::extractMax(){return nullptr;}
 
 NodeBase* DataStructure::peek(){return nullptr;}
 
 NodeBase* DataStructure::find(int value){return nullptr;}
+
+int DataStructure::findIndex(NodeBase* node_ptr){return 0;}
 
 
