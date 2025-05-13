@@ -29,7 +29,7 @@ class DataStructure{
     
     virtual int getSize();
 
-    virtual void insert(int data, int key);
+    virtual void insert(int key, int data);
 
     virtual int firstElement();
     
@@ -49,5 +49,7 @@ class DataStructure{
 
     virtual NodeBase* find(int value);
 
-    int findIndex(NodeBase* node_ptr);
+    virtual int findIndex(NodeBase* node_ptr);
+
+    virtual void deleteLast();
 };

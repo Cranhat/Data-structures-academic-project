@@ -22,9 +22,11 @@ void Heap::insert(int key, int value) {
     heapNode* newNode = new heapNode();
     newNode -> value = value;
     newNode -> key = key;
-    data[size++] = newNode;
+    data[size] = newNode;
 
-    siftUp(size - 1);
+    siftUp(size);
+
+    size = size + 1;
 }
 
 void Heap::siftUp(int index){
@@ -130,14 +132,14 @@ void Heap::changeKey(heapNode* node_ptr, int key){
     }
 }
 
-void Heap::changeKey(int node_index, int key){
-    if(key == data[node_index] -> key){
+void Heap::changeKey(int node_index, int new_key){
+    if(new_key == data[node_index] -> key){
         return;
-    }else if(key >  data[node_index] -> key){
-        data[node_index] -> key = key;
+    }else if(new_key > data[node_index] -> key){
+        data[node_index] -> key = new_key;
         siftUp(node_index);
     }else{
-        data[node_index] -> key = key;
+        data[node_index] -> key = new_key;
         heapify(node_index);
     }
 }
@@ -183,3 +185,6 @@ void Heap::printElements(){
 	}
 }
 
+void Heap::deleteLast(){
+    delete data[size--];
+}

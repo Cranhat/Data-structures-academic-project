@@ -24,7 +24,7 @@ int DataStructure::lastElement(){ return 0;}
 
 int DataStructure::firstElement(){ return 0;}
 
-void DataStructure::insert(int data, int key){}
+void DataStructure::insert(int key, int data){}
 
 void DataStructure::clear(){}
 
@@ -41,5 +41,7 @@ NodeBase* DataStructure::peek(){return nullptr;}
 NodeBase* DataStructure::find(int value){return nullptr;}
 
 int DataStructure::findIndex(NodeBase* node_ptr){return 0;}
+
+void DataStructure::deleteLast(){}
 
 

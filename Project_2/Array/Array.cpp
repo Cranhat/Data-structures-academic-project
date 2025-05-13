@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 PriorityQueueArray::PriorityQueueArray() {
-    capacity = 1000;
+    capacity = 10;
     size = 0;
     data = new arrayNode*[capacity];
 }
@@ -115,4 +115,8 @@ int PriorityQueueArray::findIndex(arrayNode* node_ptr){
         }
     }
     return -1;
+}
+
+void PriorityQueueArray::deleteLast(){
+    delete data[size--];
 }

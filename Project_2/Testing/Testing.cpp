@@ -74,12 +74,11 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         allocate_from_csv(object, dataFilePath, sizes[j]);
 
         sum_of_time_elapsed = 0;
-        void* node_ptr = nullptr;
 
         for(int i = 0; i < mean_of_operations ; i++){
-            time_elapsed = test_time(object, [&object, operation, node_ptr]() {
+            time_elapsed = test_time(object, [&object, operation]() {
                 if (operation == "insert"){
-                    object.insert(1, rand() % object.getSize() * 10);
+                    object.insert(rand() % object.getSize() * 10, rand() % object.getSize() * 10);
                 }else if (operation == "extractMax"){
                     object.extractMax();
                 }else if (operation == "peek"){
@@ -92,12 +91,12 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
                     printf("invalid testing operation\n");
                 }
             });
-            if (operation == "insert"){
-                object.extractMax();
-            }else if (operation == "extractMax"){
-                object.insert(1, 1);
-            }
             sum_of_time_elapsed += time_elapsed;
+            if (operation == "insert"){
+                object.deleteLast();
+            }else if (operation == "extractMax"){
+                object.insert(1, object.getSize() * 10);
+            }
         }
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
         keys[j] = object.getSize();

@@ -31,4 +31,5 @@ public:
     void clear();
     void printElements();
     int findIndex(arrayNode* node_ptr);
+    void deleteLast();
 };

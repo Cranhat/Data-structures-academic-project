@@ -5,7 +5,6 @@
 
 int* create_randomized_list(int size, int max_value){
     int* lista = (int *) malloc(sizeof(int) * size);
-
     if (!lista) {
 
         printf("Memory allocation failed!\n");

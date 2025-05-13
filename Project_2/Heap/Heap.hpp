@@ -66,5 +66,7 @@ class Heap  : public DataStructure{
 
     void changeKey(int arrayIndex, int key);
 
+    void deleteLast();
+
 
 };
