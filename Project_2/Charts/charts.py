@@ -7,8 +7,8 @@ import numpy as np
 plt.rcParams.update({'font.size': 18})
 
 
-path = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/"
-# path = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/"
+# path = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/"
+path = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_2/Results/"
 
 
 files = ["ar changeKey.csv", "ar extractMax.csv", "ar getSize.csv", "ar insert.csv", "ar peek.csv", "hp changeKey.csv", "hp extractMax.csv", "hp getSize.csv", "hp insert.csv", "hp peek.csv"]
@@ -44,6 +44,7 @@ fig, ax = plt.subplots(figsize=(20, 10))
 for i, element in enumerate(data):
     if "hp" in element:
         ax.plot(data[element]["count"], data[element]["time"], 'o-', label = element)
+        ax.polyfit(data[element]["count"], data[element]["time"], label = "linia trendu")
 
 title = "Wszystkie operacje dla kopca"
 ax.grid()

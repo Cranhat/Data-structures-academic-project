@@ -78,13 +78,13 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         for(int i = 0; i < mean_of_operations ; i++){
             time_elapsed = test_time(object, [&object, operation]() {
                 if (operation == "insert"){
-                    object.insert(rand() % object.getSize() * 10, rand() % object.getSize() * 10);
+                    object.insert(rand() % object.getSize() * 5, rand() % object.getSize() * 5);
                 }else if (operation == "extractMax"){
                     object.extractMax();
                 }else if (operation == "peek"){
                     object.peek();
                 }else if (operation == "changeKey"){
-                    object.changeKey(rand() % object.getSize(), rand() % object.getSize() * 10);
+                    object.changeKey(rand() % object.getSize(), rand() % object.getSize() * 5);
                 }else if(operation == "getSize"){
                     object.getSize();
                 }else{
@@ -94,8 +94,9 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
             sum_of_time_elapsed += time_elapsed;
             if (operation == "insert"){
                 object.deleteLast();
-            }else if (operation == "extractMax"){
-                object.insert(1, object.getSize() * 10);
+            }
+            else if (operation == "extractMax"){
+                object.insert(object.getSize() * 5, object.getSize() * 5);
             }
         }
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;

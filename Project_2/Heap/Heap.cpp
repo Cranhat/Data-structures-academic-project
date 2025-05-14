@@ -166,6 +166,9 @@ void Heap::resize() {
 }
 
 void Heap::clear(){
+    for (int i = 0; i < size; i++){
+        delete data[i];
+    }
     delete[] data;
 
     capacity = 10;
@@ -186,5 +189,7 @@ void Heap::printElements(){
 }
 
 void Heap::deleteLast(){
-    delete data[size--];
+    if (size > 0){
+        delete data[size-- - 1];
+    }
 }

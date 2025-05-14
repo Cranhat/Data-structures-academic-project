@@ -24,6 +24,7 @@ void PriorityQueueArray::insert(int key, int value) {
     newNode->key = key;
     newNode->value = value;
     data[size++] = newNode;
+
 }
 
 arrayNode* PriorityQueueArray::extractMax(){
@@ -96,6 +97,9 @@ void PriorityQueueArray::resize() {
 }
 
 void PriorityQueueArray::clear() {
+    for (int i = 0; i < size; i++){
+        delete data[i];
+    }
     delete[] data;
     capacity = 10;
     size = 0;
@@ -118,5 +122,7 @@ int PriorityQueueArray::findIndex(arrayNode* node_ptr){
 }
 
 void PriorityQueueArray::deleteLast(){
-    delete data[size--];
+    if (size > 0){
+        delete data[size-- - 1];
+    }
 }
