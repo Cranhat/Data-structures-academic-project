@@ -14,7 +14,7 @@ void HashTableOA::addHash(int key, int value){
             }
             i += 1;
         }
-        insert(i,  value);
+        insert(i, key,  value);
         size++;
     }
 }
@@ -45,12 +45,12 @@ void HashTableOA::deleteHashKeyOnly(int key){
     size--;
 }
 
-void HashTableOA::insert(int key, int value) {
+void HashTableOA::insert(int i, int key, int value) {
 
     arrayNode* newNode = new arrayNode();
     newNode->key = key;
     newNode->value = value;
-    data[key] = newNode;
+    data[i] = newNode;
 }
 
 void HashTableOA::printElements() {

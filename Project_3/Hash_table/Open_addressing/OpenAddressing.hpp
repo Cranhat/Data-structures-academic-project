@@ -5,7 +5,7 @@
 
 class HashTableOA : public DynamicArray{
     protected:
-    // arrayNode** data;
+    
     FUNC_PTR addresing_function;
 
     public:
@@ -13,6 +13,10 @@ class HashTableOA : public DynamicArray{
 	    data = new arrayNode*[capacity];
         size = 0;
         this -> addresing_function = addresing_function;
+
+        for (int i = 0; i < capacity; i++){
+            data[i] = nullptr;
+        }
     }
 
     ~HashTableOA(){
@@ -28,7 +32,7 @@ class HashTableOA : public DynamicArray{
 
     void deleteHashKeyOnly(int key);
 
-    void insert(int key, int value);
+    void insert(int i, int key, int value);
 
     void printElements();
 };

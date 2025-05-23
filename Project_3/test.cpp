@@ -14,9 +14,13 @@ int main(){
 
     ht.addHash(3, 3);
 
-    ht.addHash(3, 3);
+    ht.addHash(1, 1);
 
     ht.addHash(1, 1);
+
+    // ht.addHash(3, 3);
+
+    // ht.addHash(1, 1);
 
     // ht.addHash(190, 190);
 
@@ -24,7 +28,7 @@ int main(){
 
     // ht.addHash(20, 20);
 
-    // ht.addHash(4, 4);
+    // ht.addHash(4, 4);2
 
     // ht.addHash(5, 5);
 
