@@ -42,6 +42,7 @@ arrayNode* DynamicArray::extractMax(){
 
     return maxNode;  
 }
+void DynamicArray::addHash(int number, int key){}
 
 arrayNode* DynamicArray::peek() {
     if (size == 0) return nullptr;
@@ -85,6 +86,10 @@ int DynamicArray::getSize() {
     return size;
 }
 
+NodeBase* DynamicArray::getRandom() {
+    return nullptr;
+}
+
 void DynamicArray::resize() {
     capacity *= 2;
     arrayNode** newData = new arrayNode*[capacity];
@@ -119,4 +124,8 @@ int DynamicArray::findIndex(arrayNode* node_ptr){
 
 void DynamicArray::deleteLast(){
     delete data[size--];
+}
+
+void DynamicArray::allocate_from_csv(std::string dataFilePath, int elements_allocated, int new_capacity){
+
 }

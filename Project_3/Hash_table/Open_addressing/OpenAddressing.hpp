@@ -5,13 +5,14 @@
 
 class HashTableOA : public DynamicArray{
     protected:
-    
+
     FUNC_PTR addresing_function;
+    int capacity = 10;
 
     public:
-    HashTableOA(int capacity, FUNC_PTR addresing_function){ // Open Addressing have load factor limitation of 1, it's not dynamic object.
-	    data = new arrayNode*[capacity];
+    HashTableOA(FUNC_PTR addresing_function){ // Open Addressing have load factor limitation of 1, it's not dynamic object.
         size = 0;
+	    data = new arrayNode*[capacity];
         this -> addresing_function = addresing_function;
 
         for (int i = 0; i < capacity; i++){
@@ -35,4 +36,12 @@ class HashTableOA : public DynamicArray{
     void insert(int i, int key, int value);
 
     void printElements();
+
+    void allocate_from_csv(std::string dataFilePath, int elements_allocated, int new_capacity);
+
+    arrayNode* getRandom();
+
+    void initialize(int new_capacity);
+
+    void clear();
 };

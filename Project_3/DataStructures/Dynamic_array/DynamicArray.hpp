@@ -29,6 +29,8 @@ public:
 
 	void addFront(int value);
 
+	void addHash(int key, int value);
+
 	void addBack(int value);
 
 	void addIndex(int element, int index);
@@ -67,5 +69,7 @@ public:
 
     void deleteLast();
 
+	NodeBase* getRandom();
 
+	void allocate_from_csv(std::string dataFilePath, int elements_allocated, int new_capacity);
 };

@@ -4,37 +4,36 @@
 #include "Hash_table/Hashing_functions/Modulo/Modulo.cpp"
 #include "DataStructures/Dynamic_array/DynamicArray.cpp"
 #include "DataStructures/DataStructure/DataStructure.cpp"
+#include "Testing/Testing.cpp"
 
 int main(){
 
-    FUNC_PTR addressing_function = modulo_hash_function;
-    HashTableOA ht(200, addressing_function);
+    int sizes[] = {500, 10000, 25000, 50000, 75000, 100000, 175000, 250000, 375000, 500000, 625000, 750000, 875000, 1000000};
+    int sizes_size = 6;
 
-    ht.addHash(1, 1);
+    int mean_of_operations = 2;
 
-    ht.addHash(3, 3);
-
-    ht.addHash(1, 1);
-
-    ht.addHash(1, 1);
-
-    // ht.addHash(3, 3);
-
-    // ht.addHash(1, 1);
-
-    // ht.addHash(190, 190);
-
-    // ht.addHash(90, 90);
-
-    // ht.addHash(20, 20);
-
-    // ht.addHash(4, 4);2
-
-    // ht.addHash(5, 5);
-
-    // ht.addHash(5, 5);
-
-    ht.printElements();
+    Testing testing;
     
+    HashTableOA oa(modulo_hash_function);
+    
+    // std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
+    // std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
+
+    std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Data/0.csv";
+    std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/";
+    
+    // oa.addHash(10, 10);
+    // oa.printElements();
+
+    // oa.allocate_from_csv(dataFilePath, 100, 200);
+
+    // oa.printElements();
+
+    printf("a\n");
+    testing.test_operation(saveFilePath + "oa add.csv", dataFilePath, oa, "addHash", sizes, sizes_size, mean_of_operations);
+    // testing.test_operation(saveFilePath + "oa delete.csv", dataFilePath, oa, "deleteHash", sizes, sizes_size, mean_of_operations);
+
+    printf("aa\n");
     return 0;
 }

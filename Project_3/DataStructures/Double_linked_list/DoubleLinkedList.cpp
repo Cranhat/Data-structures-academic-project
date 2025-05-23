@@ -15,11 +15,11 @@ DoubleLinkedList::~DoubleLinkedList(){
 }
 
 int DoubleLinkedList::firstElement(){
-    return head -> data;
+    return head -> value;
 }
 
 int DoubleLinkedList::lastElement(){
-    return tail -> data;
+    return tail -> value;
 }
 
 void DoubleLinkedList::printElements(){
@@ -29,7 +29,7 @@ void DoubleLinkedList::printElements(){
     int i = 0;
 
     do{
-        printf("%dith element = %d\n", i, next_element -> data);
+        printf("%dith element = %d\n", i, next_element -> value);
         next_element = next_element -> next; i++;
 
     }while(next_element != nullptr);
@@ -38,7 +38,7 @@ void DoubleLinkedList::printElements(){
 
 void DoubleLinkedList::addFront(int value){
     Node* newNode = new Node();
-    newNode -> data = value;
+    newNode -> value = value;
     newNode -> previous = nullptr;
 
     if (head == nullptr){
@@ -58,7 +58,7 @@ void DoubleLinkedList::addFront(int value){
 
 void DoubleLinkedList::addBack(int value){
     Node* newNode = new Node();
-    newNode -> data = value;
+    newNode -> value = value;
     newNode -> next = nullptr;
 
     if (head == nullptr) {
@@ -99,7 +99,9 @@ void DoubleLinkedList::deleteBack(){
 
 }
 
+void DoubleLinkedList::addHash(int number, int key){}
 
+void DoubleLinkedList::deleteLast(){}
 
 void DoubleLinkedList::deleteFront(){ 
     if (head == nullptr) return;
@@ -150,7 +152,7 @@ void DoubleLinkedList::addIndex(int value, int index){
         while (counter++ != index){
             next_item = next_item -> next;
         }
-        newNode -> data = value; 
+        newNode -> value = value; 
         newNode -> next = next_item;
         newNode -> previous = next_item -> previous;
         (next_item -> previous) -> next = newNode;
@@ -162,7 +164,7 @@ void DoubleLinkedList::addIndex(int value, int index){
 bool DoubleLinkedList::contains(int value){
     Node* next_element = head;
     while(next_element -> next != nullptr){
-        if (next_element -> data == value) return true;
+        if (next_element -> value == value) return true;
         next_element = next_element -> next;
     }
 
@@ -173,7 +175,7 @@ bool DoubleLinkedList::contains(int value){
 Node* DoubleLinkedList::givePointer(int value){ 
     Node* next_element = head;
     while(next_element -> next != nullptr){
-        if (next_element -> data == value) return next_element;
+        if (next_element -> value == value) return next_element;
         next_element = next_element -> next;
     }
     return nullptr;
@@ -195,3 +197,8 @@ void DoubleLinkedList::clear(){
     while(head != nullptr) deleteFront();
 }
 
+Node* DoubleLinkedList::getRandom(){
+    return nullptr;
+}
+
+void DoubleLinkedList::allocate_from_csv(std::string dataFilePath, int elements_allocated, int new_capacity){}

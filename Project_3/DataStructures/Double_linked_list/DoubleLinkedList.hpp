@@ -4,7 +4,7 @@
 
 struct Node : public NodeBase{
 
-    int data;
+    int value;
     int key;
     Node* next;
     Node* previous;
@@ -45,6 +45,14 @@ class DoubleLinkedList : public DataStructure{
 
     int getSize(); 
 
+    void deleteLast();
+
+    void addHash(int number, int key);
+
     Node* givePointer(int value); // return a pointer to first node containing value
+
+    Node* getRandom();
+
+    void allocate_from_csv(std::string dataFilePath, int elements_allocated, int new_capacity);
 
 };

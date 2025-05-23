@@ -25,29 +25,28 @@ double Testing::test_time(DataStructure& object, std::function<void()> func){
     return duration.count(); 
 }
 
-void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int size){
+// void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int size){
 
-    std::ifstream myFile(FilePath.c_str(), std::ios::in);
+//     std::ifstream myFile(FilePath.c_str(), std::ios::in);
 
-    int number, key, location, count = 0;;
-    std::string line;
+//     int number, key, location, count = 0;;
+//     std::string line;
     
-    object.clear();
+//     object.clear();
 
-    while (std::getline(myFile, line) && size > count){
+//     while (std::getline(myFile, line) && size > count){
 
-        location = line.find(';');
+//         location = line.find(';');
 
-        number = stoi(line.substr(0, location));
-        key = stoi(line.substr(location + 1));
+//         number = stoi(line.substr(0, location));
+//         key = stoi(line.substr(location + 1));
+//         object.addHash(number, key);
+//         count++;
+//     }    
 
-        object.insert(number, key);
-        count++;
-    }    
 
-
-    myFile.close();
-}
+//     myFile.close();
+// }
 
 void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count){
 
@@ -70,25 +69,29 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
     double values[sizes_size];
 
     for(int j = 0; j < sizes_size; j++){
-
-        allocate_from_csv(object, dataFilePath, sizes[j]);
+    std::cout << "current size: " << sizes[j] << std::endl;
+    object.allocate_from_csv(dataFilePath, sizes[j], sizes[j] * 1.3);
 
         sum_of_time_elapsed = 0;
 
         for(int i = 0; i < mean_of_operations ; i++){
-            time_elapsed = test_time(object, [&object, operation]() {
+            NodeBase* random_existing_object = object.getRandom();
+            int deleted_node_key = random_existing_object -> key;
+            int deleted_node_value = random_existing_object -> value;
+
+            time_elapsed = test_time(object, [&object, operation, deleted_node_key, deleted_node_value]() {
                 if (operation == "insert"){
-                    object.insert(rand() % object.getSize(), rand() % object.getSize());
-                }else if (operation == "delete"){
-                    object.deleteElement(1, 1); // which element ?
+                    object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
+                }else if (operation == "deleteHash"){
+                    object.deleteHash(deleted_node_key, deleted_node_value);
                 }
             });
             sum_of_time_elapsed += time_elapsed;
-            if (operation == "insert"){
-                object.deleteElement(1, 1); // which element?
-            }else if (operation == "extractMax"){
-                object.insert(rand() % object.getSize(), rand() % object.getSize());
-            }
+            // if (operation == "insertHash"){
+            //     object.deleteLast(); 
+            // }else if (operation == "deleteHash"){
+            //     object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
+            // }
         }
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
         keys[j] = object.getSize();
