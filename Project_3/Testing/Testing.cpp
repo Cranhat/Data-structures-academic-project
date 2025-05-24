@@ -75,7 +75,9 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         sum_of_time_elapsed = 0;
 
         for(int i = 0; i < mean_of_operations ; i++){
+
             NodeBase* random_existing_object = object.getRandom();
+            
             int deleted_node_key = random_existing_object -> key;
             int deleted_node_value = random_existing_object -> value;
 
@@ -87,11 +89,12 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
                 }
             });
             sum_of_time_elapsed += time_elapsed;
-            // if (operation == "insertHash"){
-            //     object.deleteLast(); 
-            // }else if (operation == "deleteHash"){
-            //     object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
-            // }
+            if (operation == "insertHash"){
+                object.deleteLast(); 
+            }
+            else if (operation == "deleteHash"){
+                object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
+            }
         }
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
         keys[j] = object.getSize();

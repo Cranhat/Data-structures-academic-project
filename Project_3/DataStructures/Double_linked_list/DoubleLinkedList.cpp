@@ -36,9 +36,10 @@ void DoubleLinkedList::printElements(){
     
 }
 
-void DoubleLinkedList::addFront(int value){
+void DoubleLinkedList::addFront(int key, int value){
     Node* newNode = new Node();
     newNode -> value = value;
+    newNode -> key = key;
     newNode -> previous = nullptr;
 
     if (head == nullptr){
@@ -56,9 +57,10 @@ void DoubleLinkedList::addFront(int value){
     }
 }
 
-void DoubleLinkedList::addBack(int value){
+void DoubleLinkedList::addBack(int key, int value){
     Node* newNode = new Node();
     newNode -> value = value;
+    newNode -> key = key;
     newNode -> next = nullptr;
 
     if (head == nullptr) {
@@ -139,12 +141,12 @@ void DoubleLinkedList::deleteIndex(int index){
     }
 }
 
-void DoubleLinkedList::addIndex(int value, int index){
+void DoubleLinkedList::addIndex(int key, int value, int index){
 
     if (index > getSize()){
         return;
     }else if (index == getSize() + 1){
-        addBack(value);
+        addBack(key, value);
     }else{
         int counter = 0;
         Node* next_item = head;
@@ -153,6 +155,7 @@ void DoubleLinkedList::addIndex(int value, int index){
             next_item = next_item -> next;
         }
         newNode -> value = value; 
+        newNode -> key = key;
         newNode -> next = next_item;
         newNode -> previous = next_item -> previous;
         (next_item -> previous) -> next = newNode;
@@ -161,7 +164,7 @@ void DoubleLinkedList::addIndex(int value, int index){
 }
 
 
-bool DoubleLinkedList::contains(int value){
+bool DoubleLinkedList::contains(int key, int value){
     Node* next_element = head;
     while(next_element -> next != nullptr){
         if (next_element -> value == value) return true;

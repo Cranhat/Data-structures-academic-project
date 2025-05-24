@@ -5,6 +5,8 @@
 
 class HashTableOA : public DynamicArray{
     protected:
+	arrayNode** data;
+	int size; 
 
     FUNC_PTR addresing_function;
     int capacity = 10;

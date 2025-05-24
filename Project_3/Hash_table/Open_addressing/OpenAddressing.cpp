@@ -37,18 +37,6 @@ void HashTableOA::deleteHash(int key, int value){
     size--;
 }
 
-void HashTableOA::deleteHashKeyOnly(int key){
-    int i = addresing_function(key, capacity);
-    for(;i < capacity; i++){
-        if (data[i] -> key == key){
-            delete data[i];
-        }
-        if (i == (capacity - 1)){
-            i = 0;
-        }
-    }
-    size--;
-}
 
 void HashTableOA::insert(int i, int key, int value) {
 
@@ -104,17 +92,18 @@ void HashTableOA::allocate_from_csv(std::string dataFilePath, int elements_alloc
     myFile.close();
 }
 
-arrayNode* HashTableOA::getRandom(){
+arrayNode* HashTableOA::getRandom(){ // returned value is off, fix needed
     if (capacity < 1){
         return nullptr;
     }
-    int i = rand() % capacity;
-    for(;i < capacity; i++){
+
+    int start = rand() % capacity;
+
+    for(int offset = 0; offset < capacity; offset++){
+        int i = (start + offset) % capacity;
+
         if (data[i] != nullptr){
             return data[i];
-        }
-        if (i == (capacity - 1)){
-            i = 0;
         }
     }
     return nullptr;

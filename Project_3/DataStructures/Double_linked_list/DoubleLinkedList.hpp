@@ -27,11 +27,11 @@ class DoubleLinkedList : public DataStructure{
 
     void printElements();
 
-    void addFront(int value); // This and below is self-explanatory
+    void addFront(int key, int value); // This and below is self-explanatory
 
-    void addBack(int value);
+    void addBack(int key,int value);
 
-    void addIndex(int value, int index);
+    void addIndex(int key, int value, int index);
 
     void deleteFront();
 
@@ -41,13 +41,13 @@ class DoubleLinkedList : public DataStructure{
 
     void clear();
 
-    bool contains(int value);
+    bool contains(int key, int value);
 
     int getSize(); 
 
     void deleteLast();
 
-    void addHash(int number, int key);
+    void addHash(int key, int number);
 
     Node* givePointer(int value); // return a pointer to first node containing value
 

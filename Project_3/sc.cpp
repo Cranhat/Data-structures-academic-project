@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "Hash_table/Open_addressing/OpenAddressing.cpp"
-#include "Hash_table/Hashing_functions/Modulo/Modulo.cpp"
-#include "DataStructures/Dynamic_array/DynamicArray.cpp"
+#include "Hash_table/Separate_chaining/SeparateChaining.cpp"
+#include "Hash_table/Hashing_functions/Hashing_functions.cpp"
+#include "DataStructures/Double_linked_list/DoubleLinkedList.cpp"
 #include "DataStructures/DataStructure/DataStructure.cpp"
 #include "Testing/Testing.cpp"
 
@@ -15,7 +15,7 @@ int main(){
 
     Testing testing;
     
-    HashTableOA oa(modulo_hash_function);
+    HashTableSC oa(modulo_hash_function);
     
     // std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Data/1.csv";
     // std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_2/Results/";
@@ -23,23 +23,18 @@ int main(){
     std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Data/0.csv";
     std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/";
     
-    // oa.addHash(10, 10);
-    // oa.printElements();
-
-    oa.allocate_from_csv(dataFilePath, 100, 200);
-
+    oa.addHash(7, 10);
     oa.printElements();
 
-    // NodeBase* node_ptr = (arrayNode*) oa.getRandom();
+    // oa.allocate_from_csv(dataFilePath, 100, 200);
 
-    std::cout << node_ptr << std::endl;
+    // oa.printElements();
 
-    std::cout << "node_ptr -> value: " << node_ptr -> key << std::endl;
+    // NodeBase* node_ptr = oa.getRandom(); // program dziala, nie da sie odczytac wwartoci
 
-    // printf("a\n");
-    // testing.test_operation(saveFilePath + "oa add.csv", dataFilePath, oa, "addHash", sizes, sizes_size, mean_of_operations);
-    // testing.test_operation(saveFilePath + "oa delete.csv", dataFilePath, oa, "deleteHash", sizes, sizes_size, mean_of_operations);
+    // Node* node_ptr = oa.getRandom();// program dziala, da sie odczytac wwartoci
 
-    // printf("aa\n");
+
+
     return 0;
 }

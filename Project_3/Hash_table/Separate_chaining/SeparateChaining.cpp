@@ -1,0 +1,72 @@
+#include "SeparateChaining.hpp"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <random>
+
+
+
+void HashTableSC::addHash(int key, int value){
+
+    data[addresing_function(key, bucket_amount)] -> addFront(key, value);
+    size++;
+}
+
+void HashTableSC::deleteHash(int key, int value){
+    // data[addresing_function(key, bucket_amount)] -> deleteElement(key, value);
+    size--;
+}
+
+void HashTableSC::printElements() {
+    for (int i = 0; i < bucket_amount; i++) {
+        std::cout << "Bucket with index = " << i << std::endl;
+        data[i] -> printElements ();
+    }
+}
+
+void HashTableSC::clear() {
+    for (int i = 0; i < bucket_amount; i++){
+        delete data[i];
+    }
+    delete[] data;
+    size = 0;
+}
+
+void HashTableSC::initialize(int bucket_amount) {
+    this -> bucket_amount = bucket_amount;
+    data = new DoubleLinkedList*[bucket_amount];
+}
+
+void HashTableSC::allocate_from_csv(std::string dataFilePath, int elements_allocated, int bucket_amount){
+    clear();
+    initialize(bucket_amount);
+
+    std::ifstream myFile(dataFilePath.c_str(), std::ios::in);
+
+    int number, key, location, count = 0;
+    std::string line;
+
+    while (std::getline(myFile, line) && elements_allocated > count){
+
+        location = line.find(';');
+
+        number = stoi(line.substr(0, location));
+        key = stoi(line.substr(location + 1));
+        
+        addHash(number, key);
+        count++;
+    }    
+    myFile.close();
+}
+
+Node* HashTableSC::getRandom(){ // returned value is off, fix needed
+    if (bucket_amount < 1){
+        return nullptr;
+    }
+
+    int i = rand() % bucket_amount;
+    if (data[i] -> getSize() > 0){
+        return data[i] -> getRandom();
+    }
+    return nullptr;
+}
