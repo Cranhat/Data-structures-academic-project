@@ -21,7 +21,7 @@ class HashTableSC : public DoubleLinkedList{
         this -> addresing_function = addresing_function;
 
         for (int i = 0; i < bucket_amount; i++){
-            data[i] = new DoubleLinkedList;
+            data[i] = new DoubleLinkedList();
         }
     }
 

@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Hash_table/Open_addressing/OpenAddressing.cpp"
-#include "Hash_table/Hashing_functions/Modulo/Modulo.cpp"
+#include "Hash_table/Hashing_functions/Hashing_functions.cpp"
 #include "DataStructures/Dynamic_array/DynamicArray.cpp"
 #include "DataStructures/DataStructure/DataStructure.cpp"
 #include "Testing/Testing.cpp"
@@ -30,11 +30,10 @@ int main(){
 
     oa.printElements();
 
-    // NodeBase* node_ptr = (arrayNode*) oa.getRandom();
+    NodeBase* node_ptr = oa.getRandom(); // program dziala, nie da sie odczytac wwartoci
 
-    std::cout << node_ptr << std::endl;
+    arrayNode* node_ptr = oa.getRandom();// program dziala, da sie odczytac wwartoci
 
-    std::cout << "node_ptr -> value: " << node_ptr -> key << std::endl;
 
     // printf("a\n");
     // testing.test_operation(saveFilePath + "oa add.csv", dataFilePath, oa, "addHash", sizes, sizes_size, mean_of_operations);

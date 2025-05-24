@@ -8,6 +8,7 @@ class HashTableOA : public DynamicArray{
 	arrayNode** data;
 	int size; 
 
+
     FUNC_PTR addresing_function;
     int capacity = 10;
 
@@ -32,8 +33,6 @@ class HashTableOA : public DynamicArray{
     void addHash(int key, int value);
 
     void deleteHash(int key, int value);
-
-    void deleteHashKeyOnly(int key);
 
     void insert(int i, int key, int value);
 

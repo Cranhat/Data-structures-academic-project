@@ -35,6 +35,8 @@ class DoubleLinkedList : public DataStructure{
 
     void deleteFront();
 
+    void deleteElement(int key, int value);
+
     void deleteBack();
 
     void deleteIndex(int index);

@@ -8,12 +8,12 @@
 
 void HashTableSC::addHash(int key, int value){
 
-    data[addresing_function(key, bucket_amount)] -> addFront(key, value);
+    data[addresing_function(key, bucket_amount)] -> addBack(key, value);
     size++;
 }
 
 void HashTableSC::deleteHash(int key, int value){
-    // data[addresing_function(key, bucket_amount)] -> deleteElement(key, value);
+    data[addresing_function(key, bucket_amount)] -> deleteElement(key, value);
     size--;
 }
 
@@ -25,20 +25,26 @@ void HashTableSC::printElements() {
 }
 
 void HashTableSC::clear() {
+    if (!bucket_amount) return;
     for (int i = 0; i < bucket_amount; i++){
         delete data[i];
     }
     delete[] data;
     size = 0;
+    bucket_amount = 0;
 }
 
 void HashTableSC::initialize(int bucket_amount) {
+    clear();
     this -> bucket_amount = bucket_amount;
     data = new DoubleLinkedList*[bucket_amount];
+    for (int i = 0; i < bucket_amount; ++i) {
+        data[i] = new DoubleLinkedList();
+    }
 }
 
 void HashTableSC::allocate_from_csv(std::string dataFilePath, int elements_allocated, int bucket_amount){
-    clear();
+
     initialize(bucket_amount);
 
     std::ifstream myFile(dataFilePath.c_str(), std::ios::in);

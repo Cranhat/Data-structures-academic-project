@@ -23,11 +23,17 @@ int main(){
     std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Data/0.csv";
     std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/";
     
-    oa.addHash(7, 10);
+    oa.addHash(7, 7);
     oa.printElements();
+    std::cout << "--------------\n";
 
-    // oa.allocate_from_csv(dataFilePath, 100, 200);
+    // oa.initialize(20);
 
+    // oa.addHash(0, 8);
+    // oa.printElements();
+
+    oa.allocate_from_csv(dataFilePath, 100, 200);
+    oa.printElements();
     // oa.printElements();
 
     // NodeBase* node_ptr = oa.getRandom(); // program dziala, nie da sie odczytac wwartoci

@@ -12,6 +12,8 @@ void DataStructure::addHash(int key, int value){}
 
 void DataStructure::deleteLast(){}
 
+void DataStructure::deleteElement(int key, int value){}
+
 void DataStructure::deleteHash(int key, int value){}
 
 NodeBase* DataStructure::getRandom(){return nullptr;}

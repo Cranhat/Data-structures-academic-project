@@ -19,11 +19,13 @@ class DataStructure{
 
     virtual void clear();
 
-    virtual void addHash(int number, int key);
+    virtual void addHash(int key, int value);
 
-    virtual void deleteHash(int number, int key);
+    virtual void deleteHash(int key, int value);
 
     virtual void deleteLast();
+
+    virtual void deleteElement(int key, int value);
 
     virtual NodeBase* getRandom();
 

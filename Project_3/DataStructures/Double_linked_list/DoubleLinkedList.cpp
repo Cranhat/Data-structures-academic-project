@@ -9,8 +9,14 @@ DoubleLinkedList::DoubleLinkedList(){
 }
 
 DoubleLinkedList::~DoubleLinkedList(){
-    while (head != nullptr) {
-        deleteBack();
+    // while (head != nullptr) {
+    //     deleteBack();
+    // }
+    Node* current = head;
+    while (current != nullptr) {
+        Node* next = current->next;
+        delete current;
+        current = next;
     }
 }
 
@@ -75,6 +81,29 @@ void DoubleLinkedList::addBack(int key, int value){
         tail -> next = newNode;
         tail = newNode;
     }
+}
+
+void DoubleLinkedList::deleteElement(int key, int value){  
+
+    Node* current = head;
+
+    while (current != nullptr){
+        if (current -> key == key && current -> value == value){
+            if (current -> previous != nullptr){
+                current -> previous -> next = current -> next;
+            }else{
+                head = current -> next;
+            }
+            if (current -> next != nullptr){
+                current->next->previous = current->previous;
+            }
+            delete current;
+            return;
+        }
+        current = current -> next;
+    }   
+    
+    std::cout << "not found" << std::endl;
 }
 
 void DoubleLinkedList::deleteBack(){  
