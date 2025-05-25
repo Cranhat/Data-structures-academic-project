@@ -72,7 +72,6 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         std::cout << "current size: " << sizes[j] << std::endl;
 
         object.allocate_from_csv(dataFilePath, sizes[j], sizes[j] / load_factor);
-        std::cout << "a\n";
         sum_of_time_elapsed = 0;
 
         for(int i = 0; i < mean_of_operations ; i++){
@@ -81,7 +80,6 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
             
             int deleted_node_key = random_existing_object -> key;
             int deleted_node_value = random_existing_object -> value;
-            std::cout << "aa\n";
             time_elapsed = test_time(object, [&object, operation, deleted_node_key, deleted_node_value]() {
                 if (operation == "insert"){
                     object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
@@ -89,7 +87,6 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
                     object.deleteHash(deleted_node_key, deleted_node_value);
                 }
             });
-            std::cout << "aaa\n";
             sum_of_time_elapsed += time_elapsed;
             if (operation == "insertHash"){
                 object.deleteBack(); 
