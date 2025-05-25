@@ -2,8 +2,10 @@
 
 #include "Hash_table/Separate_chaining/SeparateChaining.cpp"
 #include "Hash_table/Hashing_functions/Hashing_functions.cpp"
+#include "Hash_table/Open_addressing/OpenAddressing.cpp"
 #include "DataStructures/Double_linked_list/DoubleLinkedList.cpp"
 #include "DataStructures/DataStructure/DataStructure.cpp"
+#include "DataStructures/Dynamic_array/DynamicArray.cpp"
 #include "Testing/Testing.cpp"
 
 int main(){
@@ -22,25 +24,26 @@ int main(){
 
     std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Data/0.csv";
     std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/";
-    
-    oa.addHash(7, 7);
-    oa.printElements();
-    std::cout << "--------------\n";
 
-    // oa.initialize(20);
-
-    // oa.addHash(0, 8);
+    oa.addHash(10,10);
+    oa.addHash(10,10);
+    // oa.addHash(10,10);
     // oa.printElements();
+    std::cout << oa.getSize() << std::endl;
 
     oa.allocate_from_csv(dataFilePath, 100, 200);
-    oa.printElements();
     // oa.printElements();
+    std::cout << oa.getSize() << std::endl;
+  
+    // std::cout << "-------------------------------------------------\n";
 
     // NodeBase* node_ptr = oa.getRandom(); // program dziala, nie da sie odczytac wwartoci
 
-    // Node* node_ptr = oa.getRandom();// program dziala, da sie odczytac wwartoci
+    // Node* node_ptr2 = oa.getRandom();// program dziala, da sie odczytac wwartoci
 
-
+    // std::cout << "-------------------------------------------------\n";
+    // std::cout << node_ptr -> key << std::endl;
+    // std::cout << node_ptr2 -> key << std::endl;
 
     return 0;
 }

@@ -4,8 +4,6 @@
 
 struct arrayNode : public NodeBase{
     ~arrayNode() {}
-    int key;
-    int value;
 };
 
 class DynamicArray : public DataStructure {

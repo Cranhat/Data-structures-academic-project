@@ -26,9 +26,9 @@ void HashTableSC::printElements() {
 
 void HashTableSC::clear() {
     if (!bucket_amount) return;
-    for (int i = 0; i < bucket_amount; i++){
-        delete data[i];
-    }
+    // for (int i = 0; i < bucket_amount; i++){
+    //     delete data[i];
+    // }
     delete[] data;
     size = 0;
     bucket_amount = 0;
@@ -66,13 +66,19 @@ void HashTableSC::allocate_from_csv(std::string dataFilePath, int elements_alloc
 }
 
 Node* HashTableSC::getRandom(){ // returned value is off, fix needed
+    std::cout << "a\n";
     if (bucket_amount < 1){
         return nullptr;
     }
+    std::cout << "aa\n";
+    int start = rand() % bucket_amount;
 
-    int i = rand() % bucket_amount;
-    if (data[i] -> getSize() > 0){
-        return data[i] -> getRandom();
+    for(int offset = 0; offset < bucket_amount; offset++){
+        int i = (start + offset) % bucket_amount;
+        if (data[i] -> getSize() > 0){
+            return data[i] -> getRandom();
+        }
     }
+    std::cout << "aaa\n";
     return nullptr;
 }

@@ -62,16 +62,17 @@ void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::s
     myFile.close();
 }
 
-void Testing::test_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, std::string operation, int sizes[], int sizes_size, int mean_of_operations, std::string key_name = "count", std::string value_name = "time"){
+void Testing::test_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, std::string operation, int sizes[], int sizes_size, int mean_of_operations, float load_factor, std::string key_name = "count", std::string value_name = "time"){
 
     double time_elapsed; double sum_of_time_elapsed = 0;
     int keys[sizes_size];
     double values[sizes_size];
 
     for(int j = 0; j < sizes_size; j++){
-    std::cout << "current size: " << sizes[j] << std::endl;
-    object.allocate_from_csv(dataFilePath, sizes[j], sizes[j] * 1.3);
+        std::cout << "current size: " << sizes[j] << std::endl;
 
+        object.allocate_from_csv(dataFilePath, sizes[j], sizes[j] / load_factor);
+        std::cout << "a\n";
         sum_of_time_elapsed = 0;
 
         for(int i = 0; i < mean_of_operations ; i++){
@@ -80,7 +81,7 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
             
             int deleted_node_key = random_existing_object -> key;
             int deleted_node_value = random_existing_object -> value;
-
+            std::cout << "aa\n";
             time_elapsed = test_time(object, [&object, operation, deleted_node_key, deleted_node_value]() {
                 if (operation == "insert"){
                     object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
@@ -88,9 +89,10 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
                     object.deleteHash(deleted_node_key, deleted_node_value);
                 }
             });
+            std::cout << "aaa\n";
             sum_of_time_elapsed += time_elapsed;
             if (operation == "insertHash"){
-                object.deleteLast(); 
+                object.deleteBack(); 
             }
             else if (operation == "deleteHash"){
                 object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);

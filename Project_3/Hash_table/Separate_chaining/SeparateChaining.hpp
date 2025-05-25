@@ -9,7 +9,6 @@ class HashTableSC : public DoubleLinkedList{
     protected:
 
 	DoubleLinkedList** data;
-	int size; 
     int bucket_amount = 10;
     FUNC_PTR addresing_function;
 
@@ -26,9 +25,9 @@ class HashTableSC : public DoubleLinkedList{
     }
 
     ~HashTableSC(){
-        for (int i = 0; i < bucket_amount; i++){
-            delete data[i];
-        }
+        // for (int i = 0; i < bucket_amount; i++){
+        //     delete data[i];
+        // }
         delete data;
     }
 

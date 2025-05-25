@@ -14,8 +14,6 @@ class Testing{
     
     void save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count);
 
-    void test_add_front_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, int number_of_measurements, int mean_of_operations, std::string key_name, std::string value_name);
-
-    void test_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, std::string operation, int sizes[], int sizes_size, int mean_of_operations,  std::string key_name, std::string value_name);
+    void test_operation(std::string saveFilePath, std::string dataFilePath, DataStructure& object, std::string operation, int sizes[], int sizes_size, int mean_of_operations, float load_factor, std::string key_name, std::string value_name);
 
 };

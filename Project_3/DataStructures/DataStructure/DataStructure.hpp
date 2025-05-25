@@ -21,9 +21,9 @@ class DataStructure{
 
     virtual void addHash(int key, int value);
 
+    virtual void deleteBack();
+    
     virtual void deleteHash(int key, int value);
-
-    virtual void deleteLast();
 
     virtual void deleteElement(int key, int value);
 

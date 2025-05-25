@@ -122,7 +122,7 @@ int DynamicArray::findIndex(arrayNode* node_ptr){
     return -1;
 }
 
-void DynamicArray::deleteLast(){
+void DynamicArray::deleteBack(){
     delete data[size--];
 }
 

@@ -4,8 +4,6 @@
 
 struct Node : public NodeBase{
 
-    int value;
-    int key;
     Node* next;
     Node* previous;
 
@@ -16,6 +14,7 @@ class DoubleLinkedList : public DataStructure{
 
     Node* head;
     Node* tail;
+    int size;
 
     DoubleLinkedList(); // Constructor
 
@@ -46,8 +45,6 @@ class DoubleLinkedList : public DataStructure{
     bool contains(int key, int value);
 
     int getSize(); 
-
-    void deleteLast();
 
     void addHash(int key, int number);
 
