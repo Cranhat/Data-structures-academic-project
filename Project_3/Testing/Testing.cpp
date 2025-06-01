@@ -25,29 +25,6 @@ double Testing::test_time(DataStructure& object, std::function<void()> func){
     return duration.count(); 
 }
 
-// void Testing::allocate_from_csv(DataStructure& object, std::string FilePath, int size){
-
-//     std::ifstream myFile(FilePath.c_str(), std::ios::in);
-
-//     int number, key, location, count = 0;;
-//     std::string line;
-    
-//     object.clear();
-
-//     while (std::getline(myFile, line) && size > count){
-
-//         location = line.find(';');
-
-//         number = stoi(line.substr(0, location));
-//         key = stoi(line.substr(location + 1));
-//         object.addHash(number, key);
-//         count++;
-//     }    
-
-
-//     myFile.close();
-// }
-
 void Testing::save_to_csv(std::string saveFilePath, std::string key_name, std::string value_name, int keys[], double values[], int values_count){
 
     std::ofstream myFile;
@@ -70,7 +47,6 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
 
     for(int j = 0; j < sizes_size; j++){
         std::cout << "current size: " << sizes[j] << std::endl;
-        // object.allocate_from_csv(dataFilePath + std::to_string(j) + ".csv", sizes[j], sizes[j] / load_factor);
         sum_of_time_elapsed = 0;
 
         for(int i = 0; i < mean_of_operations ; i++){
@@ -99,6 +75,5 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         values[j] = sum_of_time_elapsed; 
         
     }
-    std::cout << "before saving\n"; 
     save_to_csv(saveFilePath, key_name, value_name, keys, values, sizes_size);
 }

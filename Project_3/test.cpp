@@ -11,7 +11,7 @@
 int main(){
 
     int sizes[] = {500, 10000, 25000, 50000, 75000, 100000, 175000, 250000};
-    int sizes_size = 2;
+    int sizes_size = 6;
 
     int mean_of_operations = 3;
 
@@ -38,24 +38,18 @@ int main(){
     testing.test_operation(saveFilePath + "oa delete 0.99.csv", dataFilePath, oa, "deleteHash", sizes, sizes_size, mean_of_operations, 0.99);
 
     testing.test_operation(saveFilePath + "sc add 0.5.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.5);
-    testing.test_operation(saveFilePath + "sc add 0.6.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.6);
     testing.test_operation(saveFilePath + "sc add 0.7.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.7);
-    testing.test_operation(saveFilePath + "sc add 0.8.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.8);
     testing.test_operation(saveFilePath + "sc add 0.9.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.9);
-    testing.test_operation(saveFilePath + "sc add 0.95.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.95);
-    testing.test_operation(saveFilePath + "sc add 1.5.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 1.5);
-    testing.test_operation(saveFilePath + "sc add 2.5.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 2.5);
-    testing.test_operation(saveFilePath + "sc add 5.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 5);
+    testing.test_operation(saveFilePath + "sc add 0.99.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 0.99);
+    testing.test_operation(saveFilePath + "sc add 2.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 2);
+    testing.test_operation(saveFilePath + "sc add 4.csv", dataFilePath, sc, "addHash", sizes, sizes_size, mean_of_operations, 4);
 
     testing.test_operation(saveFilePath + "sc delete 0.5.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.5);
-    testing.test_operation(saveFilePath + "sc delete 0.6.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.6);
     testing.test_operation(saveFilePath + "sc delete 0.7.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.7);
-    testing.test_operation(saveFilePath + "sc delete 0.8.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.8);
     testing.test_operation(saveFilePath + "sc delete 0.9.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.9);
-    testing.test_operation(saveFilePath + "sc delete 0.95.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.95);
-    testing.test_operation(saveFilePath + "sc delete 1.5.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 1.5);
-    testing.test_operation(saveFilePath + "sc delete 2.5.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 2.5);
-    testing.test_operation(saveFilePath + "sc delete 5.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 5);
+    testing.test_operation(saveFilePath + "sc delete 0.99.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 0.99);
+    testing.test_operation(saveFilePath + "sc delete 2.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 2);
+    testing.test_operation(saveFilePath + "sc delete 4.csv", dataFilePath, sc, "deleteHash", sizes, sizes_size, mean_of_operations, 4);
 
     HashTableOA oa1(multiplication_hash_function);
     HashTableSC sc1(multiplication_hash_function);
@@ -74,24 +68,18 @@ int main(){
     testing.test_operation(saveFilePath + "oa1 delete 0.99.csv", dataFilePath, oa1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.99);
 
     testing.test_operation(saveFilePath + "sc1 add 0.5.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.5);
-    testing.test_operation(saveFilePath + "sc1 add 0.6.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.6);
     testing.test_operation(saveFilePath + "sc1 add 0.7.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.7);
-    testing.test_operation(saveFilePath + "sc1 add 0.8.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.8);
     testing.test_operation(saveFilePath + "sc1 add 0.9.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.9);
-    testing.test_operation(saveFilePath + "sc1 add 0.95.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.95);
-    testing.test_operation(saveFilePath + "sc1 add 1.5.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 1.5);
-    testing.test_operation(saveFilePath + "sc1 add 2.5.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 2.5);
-    testing.test_operation(saveFilePath + "sc1 add 5.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 5);
+    testing.test_operation(saveFilePath + "sc1 add 0.99.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 0.99);
+    testing.test_operation(saveFilePath + "sc1 add 2.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 2);
+    testing.test_operation(saveFilePath + "sc1 add 4.csv", dataFilePath, sc1, "addHash", sizes, sizes_size, mean_of_operations, 4);
 
     testing.test_operation(saveFilePath + "sc1 delete 0.5.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.5);
-    testing.test_operation(saveFilePath + "sc1 delete 0.6.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.6);
     testing.test_operation(saveFilePath + "sc1 delete 0.7.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.7);
-    testing.test_operation(saveFilePath + "sc1 delete 0.8.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.8);
     testing.test_operation(saveFilePath + "sc1 delete 0.9.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.9);
-    testing.test_operation(saveFilePath + "sc1 delete 0.95.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.95);
-    testing.test_operation(saveFilePath + "sc1 delete 1.5.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 1.5);
-    testing.test_operation(saveFilePath + "sc1 delete 2.5.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 2.5);
-    testing.test_operation(saveFilePath + "sc1 delete 5.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 5);
+    testing.test_operation(saveFilePath + "sc1 delete 0.99.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 0.99);
+    testing.test_operation(saveFilePath + "sc1 delete 2.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 2);
+    testing.test_operation(saveFilePath + "sc1 delete 4.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 4);
 
 
     printf("aa\n");
