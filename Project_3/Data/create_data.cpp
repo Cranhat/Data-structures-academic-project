@@ -10,9 +10,9 @@ int main(){
 
     int* list;
     int* keys;
-    int list_size = 5000000;
+    int list_size = 500000;
 
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < 100; i++){
         list = create_randomized_list(list_size, list_size);
         keys = create_randomized_list(list_size, list_size * 10);   
         save_array_keys_to_csv(saveFilePath + std::to_string(i) + ".csv", list, keys, list_size);

@@ -1,4 +1,5 @@
 #include "DataStructure.hpp"
+#include <string>
 
 DataStructure::DataStructure(){}
 

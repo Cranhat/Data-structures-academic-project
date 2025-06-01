@@ -70,19 +70,18 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
 
     for(int j = 0; j < sizes_size; j++){
         std::cout << "current size: " << sizes[j] << std::endl;
-
-        object.allocate_from_csv(dataFilePath, sizes[j], sizes[j] / load_factor);
+        // object.allocate_from_csv(dataFilePath + std::to_string(j) + ".csv", sizes[j], sizes[j] / load_factor);
         sum_of_time_elapsed = 0;
 
         for(int i = 0; i < mean_of_operations ; i++){
-
+            object.allocate_from_csv(dataFilePath + std::to_string(i) + ".csv", sizes[j], sizes[j] / load_factor);
             NodeBase* random_existing_object = object.getRandom();
             
             int deleted_node_key = random_existing_object -> key;
             int deleted_node_value = random_existing_object -> value;
             time_elapsed = test_time(object, [&object, operation, deleted_node_key, deleted_node_value]() {
                 if (operation == "insert"){
-                    object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
+                    object.addHash(rand() % object.getSize(), rand() % object.getSize());
                 }else if (operation == "deleteHash"){
                     object.deleteHash(deleted_node_key, deleted_node_value);
                 }
@@ -92,7 +91,7 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
                 object.deleteBack(); 
             }
             else if (operation == "deleteHash"){
-                object.addHash(rand() % object.getSize(), rand() % object.getSize() * 10);
+                object.addHash(rand() % object.getSize(), rand() % object.getSize());
             }
         }
         sum_of_time_elapsed = sum_of_time_elapsed/mean_of_operations;
@@ -100,5 +99,6 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
         values[j] = sum_of_time_elapsed; 
         
     }
+    std::cout << "before saving\n"; 
     save_to_csv(saveFilePath, key_name, value_name, keys, values, sizes_size);
 }

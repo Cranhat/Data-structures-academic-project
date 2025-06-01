@@ -14,7 +14,7 @@ class HashTableSC : public DoubleLinkedList{
 
 
     public:
-    HashTableSC(FUNC_PTR addresing_function){ // Open Addressing have load factor limitation of 1, it's not dynamic object.
+    HashTableSC(FUNC_PTR addresing_function){ 
         size = 0;
 	    data = new DoubleLinkedList*[bucket_amount];
         this -> addresing_function = addresing_function;
@@ -25,9 +25,6 @@ class HashTableSC : public DoubleLinkedList{
     }
 
     ~HashTableSC(){
-        // for (int i = 0; i < bucket_amount; i++){
-        //     delete data[i];
-        // }
         delete data;
     }
 

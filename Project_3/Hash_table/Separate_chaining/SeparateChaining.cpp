@@ -7,7 +7,6 @@
 
 
 void HashTableSC::addHash(int key, int value){
-
     data[addresing_function(key, bucket_amount)] -> addBack(key, value);
     size++;
 }
@@ -26,9 +25,9 @@ void HashTableSC::printElements() {
 
 void HashTableSC::clear() {
     if (!bucket_amount) return;
-    // for (int i = 0; i < bucket_amount; i++){
-    //     delete data[i];
-    // }
+    for (int i = 0; i < bucket_amount; i++){
+        delete data[i];
+    }
     delete[] data;
     size = 0;
     bucket_amount = 0;
