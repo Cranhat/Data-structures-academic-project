@@ -64,12 +64,10 @@ void HashTableSC::allocate_from_csv(std::string dataFilePath, int elements_alloc
     myFile.close();
 }
 
-Node* HashTableSC::getRandom(){ // returned value is off, fix needed
-    std::cout << "a\n";
+Node* HashTableSC::getRandom(){
     if (bucket_amount < 1){
         return nullptr;
     }
-    std::cout << "aa\n";
     int start = rand() % bucket_amount;
 
     for(int offset = 0; offset < bucket_amount; offset++){
@@ -78,6 +76,5 @@ Node* HashTableSC::getRandom(){ // returned value is off, fix needed
             return data[i] -> getRandom();
         }
     }
-    std::cout << "aaa\n";
     return nullptr;
 }

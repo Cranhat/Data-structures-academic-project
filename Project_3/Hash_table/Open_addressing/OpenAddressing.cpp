@@ -22,18 +22,17 @@ void HashTableOA::addHash(int key, int value){
 }
 
 void HashTableOA::deleteHash(int key, int value){
-    int i = addresing_function(key, capacity);
-    for(;i < capacity; i++){
-        if (data[i] -> key == key && data[i] -> value == value){
-            delete data[i];
-            data[i] = nullptr;
+    int index;
+    int starting_index = addresing_function(key, capacity);
+    for(int i = starting_index; i < capacity + starting_index; i++){
+        index = i % capacity;
+        if (data[index] != nullptr && data[index] -> key == key && data[index] -> value == value){
+            delete data[index];
+            data[index] = nullptr;
+            size--;
             break;
         }
-        if (i == (capacity - 1)){
-            i = 0;
-        }
     }
-    size--;
 }
 
 

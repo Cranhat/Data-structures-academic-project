@@ -6,16 +6,16 @@ import numpy as np
 plt.rcParams.update({'font.size': 18})
 
 
-# path_modulo = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Results/"
-# path_modulo = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/"
-path_modulo = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/"
-path_multiplication = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/"
+path_modulo = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Results/"
+path_multiplication = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/"
+# path_modulo = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/"
+# path_multiplication = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/"
 
 
 files_modulo = ["oa add 0.5.csv", "oa add 0.7.csv", "oa add 0.9.csv", "oa add 0.99.csv",
         "oa delete 0.5.csv", "oa delete 0.7.csv", "oa delete 0.9.csv", "oa delete 0.99.csv",
-        "sc add 0.5.csv", "sc add 0.6.csv", "sc add 0.7.csv", "sc add 0.9.csv", "sc add 0.7.csv", "sc add 0.99.csv", "sc add 2.csv", "sc add 4.csv",
-        "sc delete 0.5.csv", "sc delete 0.6.csv", "sc delete 0.7.csv", "sc delete 0.9.csv", "sc delete 0.7.csv", "sc delete 0.99.csv", "sc delete 2.csv", "sc delete 4.csv"]
+        "sc add 0.5.csv", "sc add 0.7.csv", "sc add 0.9.csv", "sc add 0.7.csv", "sc add 0.99.csv", "sc add 2.csv", "sc add 4.csv",
+        "sc delete 0.5.csv", "sc delete 0.7.csv", "sc delete 0.9.csv", "sc delete 0.7.csv", "sc delete 0.99.csv", "sc delete 2.csv", "sc delete 4.csv"]
  
 files_multiplication = ["oa1 add 0.5.csv", "oa1 add 0.7.csv", "oa1 add 0.9.csv", "oa1 add 0.99.csv",
         "oa1 delete 0.5.csv", "oa1 delete 0.7.csv", "oa1 delete 0.9.csv", "oa1 delete 0.99.csv",
