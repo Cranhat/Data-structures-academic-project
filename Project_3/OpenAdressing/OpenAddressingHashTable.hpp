@@ -1,29 +1,26 @@
 #ifndef OPENADDRESSINGHASHTABLE_H
 #define OPENADDRESSINGHASHTABLE_H
 
-#include <vector>
+#include <string>
 #include "HashTable.h"
+
+struct aarayNode {
+    int key;
+    int value;
+};
 
 class OpenAddressingHashTable : public HashTable {
 private:
-    struct Entry {
-        int key;
-        int value;
-        bool isEmpty;
-        bool isDeleted;
-
-        Entry() : key(-1), value(-1), isEmpty(true), isDeleted(false) {}
-        Entry(int k, int v) : key(k), value(v), isEmpty(false), isDeleted(false) {}
-    };
-
-    std::vector<Entry> table;
+    arrayNode** data;
+    int size;
     int capacity;
 
     int hashFunction(int key);
-    int probe(int key, int i);
 
 public:
-    OpenAddressingHashTable(int size);
+    OpenAddressingHashTable(int capacity = 10;);
+    ~OpenAddressingHashTable();
+
     void insert(int key, int value) override;
     int search(int key) override;
     void remove(int key) override;
