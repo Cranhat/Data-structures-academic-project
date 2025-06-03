@@ -111,3 +111,15 @@ AVLNode* AVLTree::remove(AVLNode* node, int key) {
 void AVLTree::remove(int key) {
     root = remove(root, key);
 }
+
+AVLNode* AVLTree::searchNode(AvlNode* node, int key) {
+    if (!node) return nullptr;
+    if (key == node ->key) return node;
+    if (key < node->key) return searchNode(node->left, key);
+    return searchNode(node->right, key);
+}
+
+int AVLTree::search(int key){
+        AVLNode* result = searchNode(root,key);
+    return result ? result->value : -1;
+}
