@@ -3,6 +3,8 @@
 
 DataStructure::DataStructure(){}
 
+DataStructure::~DataStructure(){}
+
 void DataStructure::printElements(){}
 
 int DataStructure::getSize(){ return 0;}

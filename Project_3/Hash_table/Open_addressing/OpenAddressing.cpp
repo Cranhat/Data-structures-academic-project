@@ -90,7 +90,7 @@ void HashTableOA::allocate_from_csv(std::string dataFilePath, int elements_alloc
     myFile.close();
 }
 
-arrayNode* HashTableOA::getRandom(){ // returned value is off, fix needed
+arrayNode* HashTableOA::getRandom(){
     if (capacity < 1){
         return nullptr;
     }

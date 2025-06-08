@@ -6,11 +6,9 @@ import numpy as np
 plt.rcParams.update({'font.size': 18})
 
 
-path_modulo = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Results/"
+path_modulo = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsModulo/"
 path_multiplication = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/"
-# path_modulo = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/"
-# path_multiplication = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/"
-
+path_AVL = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsAVL/"
 
 files_modulo = ["oa add 0.5.csv", "oa add 0.7.csv", "oa add 0.9.csv", "oa add 0.99.csv",
         "oa delete 0.5.csv", "oa delete 0.7.csv", "oa delete 0.9.csv", "oa delete 0.99.csv",
@@ -22,8 +20,11 @@ files_multiplication = ["oa1 add 0.5.csv", "oa1 add 0.7.csv", "oa1 add 0.9.csv",
         "sc1 add 0.5.csv", "sc1 add 0.7.csv", "sc1 add 0.9.csv", "sc1 add 0.99.csv", "sc1 add 2.csv", "sc1 add 4.csv",
         "sc1 delete 0.5.csv", "sc1 delete 0.7.csv", "sc1 delete 0.9.csv", "sc1 delete 0.99.csv", "sc1 delete 2.csv", "sc1 delete 4.csv"]
 
+files_AVL = ["avl add.csv", "avl delete.csv"]
+
 data_modulo = {}
 data_multiplication = {}
+data_avl = {}
 
 for i, element in enumerate(files_modulo):
     data_modulo[element[:-4]] = pd.read_csv(path_modulo + element, sep = ";")
@@ -31,7 +32,31 @@ for i, element in enumerate(files_modulo):
 for i, element in enumerate(files_multiplication):
     data_multiplication[element[:-4]] = pd.read_csv(path_multiplication + element, sep = ";")
 
+for i, element in enumerate(files_AVL):
+    data_avl[element[:-4]] = pd.read_csv(path_multiplication + element, sep = ";")
+
 # -------------------------------
+fig, ax = plt.subplots(figsize=(14, 7))
+
+for i, avl in enumerate(data_avl):
+    if "avl" in avl:
+        ax.plot(data_avl[avl]["count"], data_avl[avl]["time"], 'o-', label = avl)
+    
+title = "Add i delte dla avl"
+ax.grid()
+ax.set_title(title)
+plt.legend(fontsize = "x-large")
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+
+
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):

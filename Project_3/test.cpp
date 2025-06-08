@@ -6,27 +6,32 @@
 #include "DataStructures/Dynamic_array/DynamicArray.cpp"
 #include "DataStructures/Double_linked_list/DoubleLinkedList.cpp"
 #include "DataStructures/DataStructure/DataStructure.cpp"
+#include "Hash_table/AVL/avl.cpp"
 #include "Testing/Testing.cpp"
 
 int main(){
 
     int sizes[] = {500, 10000, 25000, 50000, 75000, 100000, 175000, 250000};
-    int sizes_size = 5;
+    int sizes_size = 4;
 
-    int mean_of_operations = 1;
+    int mean_of_operations = 10;
 
     Testing testing;
     
     HashTableOA oa(modulo_hash_function);
     HashTableSC sc(modulo_hash_function);
-
-    std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Data/";
-    std::string saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Results/";
-    // std::string dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Data/";
-    // std::string saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Results/";
+    AVLTree avl;
     
+    std::string dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Data/";
+    std::string saveFilePath;
+    
+    saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsAVL/";
+    printf("testing started\n");
+    testing.test_operation(saveFilePath + "avl add.csv", dataFilePath, avl, "addHash", sizes, sizes_size, mean_of_operations, 1);
+    testing.test_operation(saveFilePath + "avl delete.csv", dataFilePath, avl, "deleteHash", sizes, sizes_size, mean_of_operations, 1);
 
-    printf("a\n");
+    
+    saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsModulo/";
     testing.test_operation(saveFilePath + "oa add 0.5.csv", dataFilePath, oa, "addHash", sizes, sizes_size, mean_of_operations, 0.5);
     testing.test_operation(saveFilePath + "oa add 0.7.csv", dataFilePath, oa, "addHash", sizes, sizes_size, mean_of_operations, 0.7);
     testing.test_operation(saveFilePath + "oa add 0.9.csv", dataFilePath, oa, "addHash", sizes, sizes_size, mean_of_operations, 0.9);
@@ -53,9 +58,6 @@ int main(){
 
     HashTableOA oa1(multiplication_hash_function);
     HashTableSC sc1(multiplication_hash_function);
-    // dataFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/Data/";
-    // saveFilePath = "C:/Users/cypri/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/";
-    dataFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/Data/";
     saveFilePath = "C:/Users/Cyprian/Projects/Data-structures-academic-project/Project_3/ResultsMultiplication/";
 
     testing.test_operation(saveFilePath + "oa1 add 0.5.csv", dataFilePath, oa1, "addHash", sizes, sizes_size, mean_of_operations, 0.5);
@@ -82,7 +84,6 @@ int main(){
     testing.test_operation(saveFilePath + "sc1 delete 2.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 2);
     testing.test_operation(saveFilePath + "sc1 delete 4.csv", dataFilePath, sc1, "deleteHash", sizes, sizes_size, mean_of_operations, 4);
 
-
-    printf("aa\n");
+    printf("testing finished\n");
     return 0;
 }

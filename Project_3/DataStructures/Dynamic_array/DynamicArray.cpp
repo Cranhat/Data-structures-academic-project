@@ -87,7 +87,8 @@ int DynamicArray::getSize() {
 }
 
 NodeBase* DynamicArray::getRandom() {
-    return nullptr;
+    if (size == 0) return nullptr;
+    return data[rand() % size];
 }
 
 void DynamicArray::resize() {

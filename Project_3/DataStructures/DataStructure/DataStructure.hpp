@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 struct NodeBase{
     int value;
@@ -12,6 +13,8 @@ class DataStructure{
     public:
 
     DataStructure();
+
+    virtual ~DataStructure();
 
     virtual void printElements();
     

@@ -55,6 +55,7 @@ void Testing::test_operation(std::string saveFilePath, std::string dataFilePath,
             
             int deleted_node_key = random_existing_object -> key;
             int deleted_node_value = random_existing_object -> value;
+            
             time_elapsed = test_time(object, [&object, operation, deleted_node_key, deleted_node_value]() {
                 if (operation == "insert"){
                     object.addHash(rand() % object.getSize(), rand() % object.getSize());
