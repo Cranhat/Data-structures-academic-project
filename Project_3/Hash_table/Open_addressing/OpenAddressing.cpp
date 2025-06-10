@@ -6,18 +6,19 @@
 
 
 void HashTableOA::addHash(int key, int value){
+    int index;
     if (size == capacity){
         std::cout << "hash table full!\n";
     }else{
-        int i = addresing_function(key, capacity);
-        while (data[i] != nullptr){
-            if(i == capacity - 1){
-                i = 0;
+        int starting_index = addresing_function(key, capacity);
+        for(int i = starting_index; i < capacity + starting_index; i++){
+            index = i % capacity;
+            if (data[index] == nullptr){
+                insert(index, key,  value);
+                size++;
+                break;
             }
-            i += 1;
         }
-        insert(i, key,  value);
-        size++;
     }
 }
 
@@ -61,6 +62,7 @@ void HashTableOA::clear() {
 }
 
 void HashTableOA::initialize(int new_capacity) {
+    clear();
     this -> capacity = new_capacity;
     data = new arrayNode*[capacity];
     for (int i = 0; i < capacity; i++){
@@ -69,7 +71,6 @@ void HashTableOA::initialize(int new_capacity) {
 }
 
 void HashTableOA::allocate_from_csv(std::string dataFilePath, int elements_allocated, int new_capacity){
-    clear();
     initialize(new_capacity);
 
     std::ifstream myFile(dataFilePath.c_str(), std::ios::in);
@@ -89,6 +90,7 @@ void HashTableOA::allocate_from_csv(std::string dataFilePath, int elements_alloc
     }    
     myFile.close();
 }
+
 
 arrayNode* HashTableOA::getRandom(){
     if (capacity < 1){

@@ -33,7 +33,7 @@ for i, element in enumerate(files_multiplication):
     data_multiplication[element[:-4]] = pd.read_csv(path_multiplication + element, sep = ";")
 
 for i, element in enumerate(files_AVL):
-    data_avl[element[:-4]] = pd.read_csv(path_multiplication + element, sep = ";")
+    data_avl[element[:-4]] = pd.read_csv(path_AVL + element, sep = ";")
 
 # -------------------------------
 fig, ax = plt.subplots(figsize=(14, 7))
@@ -42,10 +42,10 @@ for i, avl in enumerate(data_avl):
     if "avl" in avl:
         ax.plot(data_avl[avl]["count"], data_avl[avl]["time"], 'o-', label = avl)
     
-title = "Add i delte dla avl"
+title = "Add i delete dla AVL"
 ax.grid()
 ax.set_title(title)
-plt.legend(fontsize = "x-large")
+plt.legend()
 plt.xlabel("count")
 plt.ylabel("time [ns]")
 plt.xticks(rotation=45) 
@@ -60,13 +60,34 @@ plt.show()
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
-    if "oa" in modulo:
+    if "oa" in modulo and "add" in modulo:
         ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
     
-title = "Wszystkie lf dla open addressing haszowania modulo"
+title = "Wszystkie lf dla operacji add open addressing haszowania modulo"
 ax.grid()
 ax.set_title(title)
-plt.legend(fontsize = "x-large")
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+
+
+fig, ax = plt.subplots(figsize=(14, 7))
+
+for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
+    if "oa" in modulo and "delete" in modulo:
+        ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
+    
+title = "Wszystkie lf dla operacji delete open addressing haszowania modulo"
+ax.grid()
+ax.set_title(title)
+plt.legend()
 plt.xlabel("count")
 plt.ylabel("time [ns]")
 plt.xticks(rotation=45) 
@@ -80,13 +101,34 @@ plt.show()
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
-    if "oa" in multiplication:
+    if "oa" in multiplication and "add" in multiplication:
         ax.plot(data_multiplication[multiplication]["count"], data_multiplication[multiplication]["time"], 'o-', label = multiplication)
-    
-title = "Wszystkie lf dla open addressing haszowania multiplication"
+
+title = "Wszystkie load factor dla operacji add open addressing haszowania modulo"
 ax.grid()
 ax.set_title(title)
-plt.legend(fontsize = "x-large")
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+
+fig, ax = plt.subplots(figsize=(14, 7))
+
+for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
+    if "oa" in multiplication and "delete" in multiplication:
+        ax.plot(data_multiplication[multiplication]["count"], data_multiplication[multiplication]["time"], 'o-', label = multiplication)
+    
+    
+title = "Wszystkie load factor dla operacji delete open addressing haszowania multiplication"
+ax.grid()
+ax.set_title(title)
+plt.legend()
 plt.xlabel("count")
 plt.ylabel("time [ns]")
 plt.xticks(rotation=45) 
@@ -100,13 +142,32 @@ plt.show()
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
-    if "sc" in modulo:
+    if "sc" in modulo and "add" in modulo:
         ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
     
-title = "Wszystkie lf dla separate chaining haszowania modulo"
+title = "Wszystkie load factor dla operacji add separate chaining haszowania modulo"
 ax.grid()
 ax.set_title(title)
-plt.legend(fontsize = "x-large")
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+fig, ax = plt.subplots(figsize=(14, 7))
+
+for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
+    if "sc" in modulo and "delete" in modulo:
+        ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
+    
+title = "Wszystkie load factor dla operacji delete separate chaining haszowania modulo"
+ax.grid()
+ax.set_title(title)
+plt.legend()
 plt.xlabel("count")
 plt.ylabel("time [ns]")
 plt.xticks(rotation=45) 
@@ -120,13 +181,32 @@ plt.show()
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
-    if "sc" in multiplication:
+    if "sc" in multiplication and  "add" in multiplication:
         ax.plot(data_multiplication[multiplication]["count"], data_multiplication[multiplication]["time"], 'o-', label = multiplication)
     
-title = "Wszystkie lf dla separate chaining haszowania multiplication"
+title = "Wszystkie load factor dla operacji add separate chaining haszowania multiplication"
 ax.grid()
 ax.set_title(title)
-plt.legend(fontsize = "x-large")
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+fig, ax = plt.subplots(figsize=(14, 7))
+
+for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
+    if "sc" in multiplication and "delete" in multiplication:
+        ax.plot(data_multiplication[multiplication]["count"], data_multiplication[multiplication]["time"], 'o-', label = multiplication)
+    
+title = "Wszystkie load factor dla operacji delete separate chaining haszowania multiplication"
+ax.grid()
+ax.set_title(title)
+plt.legend()
 plt.xlabel("count")
 plt.ylabel("time [ns]")
 plt.xticks(rotation=45) 

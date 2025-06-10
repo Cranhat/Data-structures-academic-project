@@ -12,9 +12,9 @@
 int main(){
 
     int sizes[] = {500, 10000, 25000, 50000, 75000, 100000, 175000, 250000};
-    int sizes_size = 4;
+    int sizes_size = 8;
 
-    int mean_of_operations = 10;
+    int mean_of_operations = 20;
 
     Testing testing;
     
