@@ -35,7 +35,50 @@ for i, element in enumerate(files_multiplication):
 for i, element in enumerate(files_AVL):
     data_avl[element[:-4]] = pd.read_csv(path_AVL + element, sep = ";")
 
-# -------------------------------
+
+# comparison of every add operation for 0.7 load factor
+fig, ax = plt.subplots(figsize=(14, 7))
+
+ax.plot(data_avl["avl add"]["count"], data_avl["avl add"]["time"], 'o-', label = "avl add")
+ax.plot(data_modulo["sc add 0.7"]["count"], data_modulo["sc add 0.7"]["time"], 'o-', label = "sc add 0.7")
+ax.plot(data_modulo["oa add 0.7"]["count"], data_modulo["oa add 0.7"]["time"], 'o-', label = "oa add 0.7")
+    
+    
+title = "Porównanie add dla każdej implementacji"
+ax.grid()
+ax.set_title(title)
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+# comparison of every delete operation for 0.7 load factor
+fig, ax = plt.subplots(figsize=(14, 7))
+
+ax.plot(data_avl["avl delete"]["count"], data_avl["avl delete"]["time"], 'o-', label = "avl delete")
+ax.plot(data_modulo["sc delete 0.7"]["count"], data_modulo["sc delete 0.7"]["time"], 'o-', label = "sc delete 0.7")
+ax.plot(data_modulo["oa delete 0.7"]["count"], data_modulo["oa delete 0.7"]["time"], 'o-', label = "oa delete 0.7")
+    
+    
+title = "Porównanie delete dla każdej implementacji"
+ax.grid()
+ax.set_title(title)
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+# --all charts for avl
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, avl in enumerate(data_avl):
@@ -55,36 +98,14 @@ plt.tight_layout()
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
-
-
-fig, ax = plt.subplots(figsize=(14, 7))
-
-for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
-    if "oa" in modulo and "add" in modulo:
-        ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
-    
-title = "Wszystkie lf dla operacji add open addressing haszowania modulo"
-ax.grid()
-ax.set_title(title)
-plt.legend()
-plt.xlabel("count")
-plt.ylabel("time [ns]")
-plt.xticks(rotation=45) 
-plt.yticks(rotation=45) 
-ax.set_xticklabels(ax.get_xticks(), fontsize=11)
-plt.tight_layout() 
-plt.savefig(title + ".pdf", format="pdf") 
-plt.show()
-
-
-
+# all delete for open addressing modulo
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
     if "oa" in modulo and "delete" in modulo:
         ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
     
-title = "Wszystkie lf dla operacji delete open addressing haszowania modulo"
+title = "Wszystkie load factor dla operacji delete open addressing haszowania modulo"
 ax.grid()
 ax.set_title(title)
 plt.legend()
@@ -97,12 +118,12 @@ plt.tight_layout()
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
-
+# all add for open addressing modulo
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
-    if "oa" in multiplication and "add" in multiplication:
-        ax.plot(data_multiplication[multiplication]["count"], data_multiplication[multiplication]["time"], 'o-', label = multiplication)
+    if "oa" in modulo and "add" in modulo:
+        ax.plot(data_modulo[modulo]["count"], data_modulo[modulo]["time"], 'o-', label = modulo)
 
 title = "Wszystkie load factor dla operacji add open addressing haszowania modulo"
 ax.grid()
@@ -118,6 +139,29 @@ plt.savefig(title + ".pdf", format="pdf")
 plt.show()
 
 
+
+# all add for open addressing multiplication
+fig, ax = plt.subplots(figsize=(14, 7))
+
+for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
+    if "oa" in multiplication and "add" in multiplication:
+        ax.plot(data_multiplication[multiplication]["count"], data_multiplication[multiplication]["time"], 'o-', label = multiplication)
+    
+    
+title = "Wszystkie load factor dla operacji add open addressing haszowania multiplication"
+ax.grid()
+ax.set_title(title)
+plt.legend()
+plt.xlabel("count")
+plt.ylabel("time [ns]")
+plt.xticks(rotation=45) 
+plt.yticks(rotation=45) 
+ax.set_xticklabels(ax.get_xticks(), fontsize=11)
+plt.tight_layout() 
+plt.savefig(title + ".pdf", format="pdf") 
+plt.show()
+
+# all delete for open addressing multiplication
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
@@ -138,7 +182,7 @@ plt.tight_layout()
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
-# -------------------------------
+# all add for separate chaining modulo
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
@@ -158,6 +202,8 @@ plt.tight_layout()
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
+
+# all delete for separate chaining modulo
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
@@ -177,7 +223,7 @@ plt.tight_layout()
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
-
+# all add for separate chaining modulo
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
@@ -197,6 +243,8 @@ plt.tight_layout()
 plt.savefig(title + ".pdf", format="pdf") 
 plt.show()
 
+
+# all delete for separate chaining modulo
 fig, ax = plt.subplots(figsize=(14, 7))
 
 for i, (modulo, multiplication) in enumerate(zip(data_modulo, data_multiplication)):
